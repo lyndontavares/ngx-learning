@@ -1,0 +1,12 @@
+button.mat-menu-item.two-line {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    line-height: 1.5;
+    height: 65px;
+
+    span:nth-child(2) {
+        color: $text-secondary;
+    }
+}

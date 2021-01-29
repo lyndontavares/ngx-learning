@@ -1,0 +1,17 @@
+.spinner-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(255, 255, 255, 0.6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 99;
+	
+	mat-spinner, mat-spinner svg {
+		height: 35px !important;
+		width: 35px !important;
+	}
+}

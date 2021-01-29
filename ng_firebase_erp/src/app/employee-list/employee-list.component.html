@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="d-flex align-items-center pb-3">
+        <div class="pr-3 col-2">
+            <img src="{{myImage}}"class="img-fluid" alt="Responsive image" width="100">
+        </div>        
+        <div class="col-8">
+            <label><h1>Employee List</h1></label>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-success" (click)="addEmp()" >Add People</button>
+        </div>        
+    </div>  
+    <table class='table table-striped'>
+            <thead class="thead-dark">
+              <tr>
+                <td>Name</td>
+                <td>Surname</td>
+                <td>Age</td>
+                <td>Gender</td>
+                <td>Action</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of emp">
+              <td>{{data.value.fnameTH}}</td>
+              <td>{{data.value.snameTH}}</td>
+              <td>{{data.value.gender}}</td>
+              <td>{{data.value.age}}</td>
+              <td>
+                  <button type="button" class="btn btn-warning" (click)="editEmp(data)" >Edit</button>
+                  <button type="button" class="btn btn-danger" (click)="delEmp(data)" >Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+</div>

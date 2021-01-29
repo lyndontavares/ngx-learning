@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title Photo Gallery
+    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montez|Josefin+Slab')
+    link(rel='stylesheet', href='/bower_components/sweetalert/dist/sweetalert.css')
+    link(rel='stylesheet', href='/css/style.css')
+    block links
+  body
+    nav.navbar.navbar-default.navbar-static-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            span.sr-only Toggle navigation
+            span.icon-bar
+          a.navbar-brand(href='/') Photo Gallery
+        #navbar.navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/')
+                span.glyphicon.glyphicon-home
+          ul.nav.navbar-nav.navbar-right
+            li#changePassword
+              a(href='/profile/changePassword') Change Password
+            li#registerLink
+              a(href='/register') Register
+            li#loginLink
+              a(href='/login') Login
+            li#logoutLink
+              a(href='/users/logout') Logout
+    .container
+      block content
+
+    script(src='/bower_components/jquery/dist/jquery.min.js')
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+    script(src='/bower_components/sweetalert/dist/sweetalert.min.js')
+    block scripts

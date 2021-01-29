@@ -1,0 +1,51 @@
+<div layout="column" layout-fill>
+
+  <div class="mat-content" layout-padding flex>
+    <div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+      <div flex-gt-xs="30">
+
+        <mat-card tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']">
+
+          <mat-card-title>
+            <mat-icon class="mat-icon-logo" svgIcon="assets:datapar"></mat-icon>
+          </mat-card-title>
+
+          <mat-card-title>Login</mat-card-title>
+
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <form *ngIf="userFormGroup" [formGroup]="userFormGroup" class="form">
+
+              <mat-form-field class="form-element">
+                <input matInput placeholder="Nome Usuário" formControlName="userName">
+                <mat-error>
+                  {{userFormGroup.controls.userName.errorMessage}}
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="form-element">
+                <input matInput placeholder="Senha" type="password" formControlName="password">
+                <mat-error>
+                  {{userFormGroup.controls.password.errorMessage}}
+                </mat-error>
+              </mat-form-field>
+
+
+
+              <div class="form-element">
+                <button mat-raised-button (click)="login()" color="primary" [disabled]="!userFormGroup.valid" class="button">Submit
+                </button>
+              </div>
+
+            </form>
+          </mat-card-content>
+          <mat-divider></mat-divider>
+          <mat-card-actions layout="row">
+
+          </mat-card-actions>
+        </mat-card>
+        <!--  <ab-alert></ab-alert> -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<h4 class="page-title">All Expenses</h4>
+
+<div *ngIf="!expensesData.data.length" class="spinner-container">
+
+	<mat-spinner></mat-spinner>
+
+</div>
+
+<ng-container *ngIf="expensesData">
+
+	<mat-table [dataSource]="expensesData" matSort matSortActive="expenseId" matSortDirection="asc" class="mat-elevation-z1">
+
+		<ng-container matColumnDef="expenseId">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 5%; flex: none">ID</mat-header-cell>
+
+			<mat-cell *matCellDef="let expense" style="width: 5%; flex: none">{{expense.expenseId}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="reference">
+
+			<mat-header-cell *matHeaderCellDef style="width: 10%; flex: none">Reference</mat-header-cell>
+
+			<mat-cell *matCellDef="let expense" style="width: 10%; flex: none">{{expense.reference}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="date">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%; flex: none">Date</mat-header-cell>
+
+			<mat-cell *matCellDef="let expense" style="width: 10%; flex: none">{{expense.date.toDate() | date:'dd/MM/yyyy'}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="description">
+
+			<mat-header-cell *matHeaderCellDef style="width: 15%; flex: none">Description</mat-header-cell>
+
+			<mat-cell *matCellDef="let expense" style="width: 15%; flex: none">{{expense.description}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="category">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 15%; flex: none">Category</mat-header-cell>
+
+			<mat-cell *matCellDef="let expense" style="width: 15%; flex: none">{{expense.category}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="type">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%; flex: none">Type</mat-header-cell>
+
+			<mat-cell *matCellDef="let expense" style="width: 20%; flex: none">{{expense.type}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="nominal">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%; flex: none">Nominal</mat-header-cell>
+
+			<mat-cell *matCellDef="let expense" style="width: 10%; flex: none">{{expense.nominal.id}}: {{expense.nominal.name}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="value">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 5%; flex: none">Value</mat-header-cell>
+
+			<mat-cell *matCellDef="let expense" style="width: 5%; flex: none">{{expense.value | currency: 'GBP'}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="tax">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 5%; flex: none">Tax</mat-header-cell>
+
+			<mat-cell *matCellDef="let expense" style="width: 5%; flex: none">{{expense.tax | currency: 'GBP'}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="total">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 5%; flex: none">Total</mat-header-cell>
+
+			<mat-cell *matCellDef="let expense" style="width: 5%; flex: none">{{expense.total | currency: 'GBP'}}</mat-cell>
+
+		</ng-container>
+
+		<mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+
+		<mat-row *matRowDef="let row; columns: tableColumns" (click)="viewExpense(row)"></mat-row>
+
+	</mat-table>
+
+	<mat-paginator [pageSize]="25" [pageSizeOptions]="[ 10, 25, 50 ]" [showFirstLastButtons]="true" class="mat-elevation-z1"></mat-paginator>
+	
+</ng-container>

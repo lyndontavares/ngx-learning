@@ -1,0 +1,251 @@
+/* Add application styles & imports to this file! */
+$btnColor: lightgray;
+$btnHoverColor: #1EB77F;
+$strongColor: #2C7CD1;
+$fontColor: #3d3c3c;
+$cmpBg: #303030;
+$cmpColor:#2C7CD1;
+$inputName:#EAFDA1;
+$inputColor: #92c34e;
+$inputBg: #3d3c3c;
+
+
+body,
+html {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: $fontColor;
+  margin: 0;
+  background: -moz-linear-gradient(-45deg, rgba(136, 212, 152, 0) 73%, rgba(136, 212, 152, 0.3) 81%, rgba(136, 212, 152, 1) 100%);
+  background: -webkit-linear-gradient(-45deg, rgba(136, 212, 152, 0) 73%, rgba(136, 212, 152, 0.3) 81%, rgba(136, 212, 152, 1) 100%);
+  background: linear-gradient(135deg, rgba(136, 212, 152, 0) 73%, rgba(136, 212, 152, 0.3) 81%, rgba(136, 212, 152, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088d498', endColorstr='#88d498', GradientType=1);
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.component-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.component {
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: $cmpBg;
+  color: $inputName;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  .tag-name,
+  .input-name,
+  .input-wrapper,
+  .input,
+  input {
+    padding: 0;
+  }
+  .tag-name {
+    color: $cmpColor;
+    line-height: 30px;
+    font-weight: bold;
+  }
+  .input-name {
+    color: $inputName;
+    &:before {
+      content: "[";
+      color: $inputName;
+    }
+    &:after {
+      content: "]";
+      color: $inputName;
+    }
+  }
+  .input-wrapper {
+    margin: 3px;
+  }
+  .input {
+    color: $inputColor;
+    &:before {
+      content: '"';
+    }
+    &:after {
+      content: '"';
+    }
+    span {
+      color: $inputColor;
+      font-style: normal;
+    }
+    input,
+    select {
+      color: $inputColor;
+      border: 0;
+      font-family: monospace;
+      outline: 0;
+      background-color: $inputBg;
+    }
+  }
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0)
+  }
+  20%,
+  60% {
+    transform: rotate(-25deg)
+  }
+  40%,
+  80% {
+    transform: rotate(10deg)
+  }
+}
+
+@media (max-width:500px) {
+  .github-corner:hover .octo-arm {
+    animation: none
+  }
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+  }
+}
+
+button {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  color: gray;
+  margin: 4px 5px 3px 0;
+  background-color: $btnColor;
+  border: 0;
+  border-radius: 4px;
+  transition: all .15s ease;
+  outline: 0;
+  &:hover:enabled {
+    color: white;
+    background-color: $btnHoverColor;
+    cursor: pointer;
+  }
+  &:active:enabled {
+    box-shadow: inset 0 0 4px rgba(black, 0.8);
+  }
+  img {
+    width: 12px;
+    padding: 7px;
+  }
+  button:disabled,
+  button[disabled]{
+    background-color: #cccccc;
+    color: #666666;
+  }
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+}
+
+table {
+  font-size: 0.8em;
+  margin-bottom: 10px;
+  td {
+    color: gray;
+    i {
+      color: $fontColor;
+    }
+  }
+}
+
+strong {
+  color: $strongColor;
+}
+
+.events {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  span {
+    color: gray;
+    background-color: honeydew;
+    transition: background-color ease-out 1s;
+  }
+}
+
+.chip {
+  box-sizing: border-box;
+  margin: 0;
+  margin-bottom: 1em;
+  border-radius: 1.5em;
+  padding: 0.6em 1em;
+  font-size: 0.8em;
+  width: 136px;
+  text-align: center;
+}
+
+.changed {
+  background-color: rgb(151, 255, 218) !important;
+  transition: unset !important;
+}
+
+app-header {
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0;
+}
+
+.brand {
+  display: flex;
+}
+
+.social {
+  flex: 0 0 80px;
+}
+
+.title {
+  padding-top: 30px;
+  .angular {
+    color: $btnHoverColor;
+  }
+}
+
+.logo {
+  position: relative;
+  display: flex;
+  flex: 0 0 230px;
+  justify-content: center;
+  align-items: center;
+}
+
+.ng-logo {
+  width: 160px;
+}
+
+.links,
+.badges {
+  text-align: right;
+}

@@ -1,0 +1,11 @@
+.bg-light {}
+
+.navbar {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.shadow {
+  -webkit-box-shadow: 0px 2px 11px -1px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 0px 2px 11px -1px rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 2px 11px -1px rgba(0, 0, 0, 0.14);
+}

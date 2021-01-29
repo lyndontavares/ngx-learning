@@ -1,0 +1,25 @@
+mat-table {
+	
+	mat-row:hover {
+		background: $white-hover;
+		@include transition;
+	}
+	
+	.mat-cell {
+		// font-size: 13px;
+	}
+
+	.mat-column-selectItem {
+		border-bottom: none !important;
+	}
+}
+
+.mat-paginator {
+	// margin-bottom: 25px;
+}
+
+.table-actions {
+	button {
+		margin-right: 15px;
+	}
+}

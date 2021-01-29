@@ -1,0 +1,39 @@
+extends layout
+
+block links
+  link(rel='stylesheet', href='/css/loggedInNavbar.css')
+
+block content
+  if albums.length
+    h1 My Albums
+    br
+    table.table.table-hover
+      thead
+        tr
+          th Cover
+          th Album Name
+          th Delete Album
+      tbody
+        each album in albums
+          tr.dataRow(data-album = album.id)
+            td 
+              a(href=`/profile/albums/${album.id}`)
+                img#cover(src=album.coverImg)
+            td.name.searchable 
+              a(href=`/profile/albums/${album.id}`)
+                h2  #{album.title} 
+            td 
+              br
+              button#delete.btn.btn-danger
+                span.glyphicon.glyphicon-trash
+  else
+    br
+    br
+    br
+    #noPhotos
+      h2 You have not made any albums yet.
+      a(href="/profile/createAlbum")
+        h3 Create one now
+            
+block scripts
+  script(src="/js/albums.js")

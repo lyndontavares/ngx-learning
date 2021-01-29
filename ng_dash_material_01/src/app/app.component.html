@@ -1,0 +1,11 @@
+<nav [ngClass]="{'expand': navExpanded}">
+  <app-nav [items]="navItems" (expand)="expandChange($event)"></app-nav>
+</nav>
+<div>
+  <header>
+    <app-header [title]="title"></app-header>
+  </header>
+  <perfect-scrollbar>
+    <router-outlet></router-outlet>
+  </perfect-scrollbar>
+</div>

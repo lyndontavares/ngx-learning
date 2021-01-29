@@ -1,0 +1,131 @@
+<h4 class="page-title">Expense Summary</h4>
+
+<div *ngIf="!expense" class="spinner-container">
+
+	<mat-spinner></mat-spinner>
+
+</div>
+
+<mat-card *ngIf="expense" fxLayout="column" fxLayoutGap="50px" class="page-card">
+	
+	<div class="details-container" fxLayout="row">
+		
+		<div class="detail-field">
+		
+			<b>Expense ID</b>
+			
+			<p># {{expense.expenseId}}</p>
+		
+		</div>
+		
+		<div class="detail-field">
+		
+			<b>Reference</b>
+			
+			<p>{{expense.reference}}</p>
+		
+		</div>
+		
+		<div class="detail-field">
+		
+			<b>Date</b>
+			
+			<p>{{expense.date.toDate() | date: 'dd/MM/yyyy'}}</p>
+		
+		</div>
+		
+		<div class="detail-field">
+		
+			<b>Total Paid</b>
+			
+			<p>{{expense.total | currency: 'GBP'}}</p>
+		
+		</div>
+		
+<!--
+		<div class="detail-field">
+		
+			<b>Recipient</b>
+			
+			<p routerLink="/contacts/{{expense.contact.id}}" (click)="viewContact()">{{expense.contact.name}}</p>
+		
+		</div>
+-->
+	
+	</div>
+	
+	<div class="details-container secondary">
+	
+		<div class="detail-field">
+		
+			<b>Description:</b>
+			
+			<p>{{expense.description}}</p>
+		
+		</div>
+	
+	</div>
+	
+	<div class="details-container secondary">
+	
+		<div class="detail-field">
+		
+			<b>Category:</b>
+			
+			<p>{{expense.category}}</p>
+		
+		</div>
+	
+	</div>
+	
+	<div class="details-container secondary">
+	
+		<div class="detail-field">
+		
+			<b>Type:</b>
+			
+			<p>{{expense.type}}</p>
+		
+		</div>
+	
+	</div>
+	
+	<div class="details-container secondary">
+	
+		<div class="detail-field">
+		
+			<b>Value:</b>
+			
+			<p>{{expense.value | currency: 'GBP'}}</p>
+		
+		</div>
+	
+		<div class="detail-field">
+		
+			<b>VAT Rate:</b>
+			
+			<p>{{expense.taxCode.rate}}%</p>
+		
+		</div>
+	
+		<div class="detail-field">
+		
+			<b>Total:</b>
+			
+			<p>{{expense.total | currency: 'GBP'}}</p>
+		
+		</div>
+	
+	</div>
+	
+	<mat-card-actions *ngIf="expense">
+
+		<button mat-button routerLink="/expenses/all">Back</button>
+	
+		<button mat-button (click)="editExpense()">Edit Expense</button>
+	
+		<button mat-button (click)="deleteExpense(userId, expenseId)">Delete Expense</button>
+	
+	</mat-card-actions>
+	
+</mat-card>

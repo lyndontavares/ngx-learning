@@ -1,0 +1,14 @@
+#home {
+  position: relative;
+  height: 100vh;
+  background-color: #a8d4dd !important;
+  color: white;
+}
+
+#home .row {
+  height: 100vh;
+}
+
+.headline{
+    /* font-size: 500% !important; */
+}

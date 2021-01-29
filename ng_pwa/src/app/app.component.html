@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <img src="assets/menu.png" height="48px"> 
+    <span class="example-spacer"></span>
+    <button mat-button>Sobre</button>
+    <button mat-button>Serviços</button>
+    <button mat-button>Contato</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div style="text-align: center">
+  <p>qrcode: {{ qrcode }}</p>
+</div>
+ 
+<video #preview id="preview"></video>  
+
+<!-- <mat-nav-list>
+      <mat-list-item  *ngFor="let kk of menu;let ind = index">  
+       <p>{{kk.email}}</p><br>  
+       <p>{{kk.nome}}</p><br>  
+      <p>{{kk.ativo}}</p><br>
+      <p >
+        <li *ngFor="let i of kk.menu;">
+         {{i.descricao}} {{i.preco}} <br>
+        </li>
+      </p>  
+      </mat-list-item>
+  </mat-nav-list>  -->

@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmit": false,
+    "sourceMap": true,
+    "declaration": false,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ],
+    "typeRoots" : [
+      "./node_modules/@types"
+    ],
+    "types": [
+      "jasmine",
+      "karma",
+      "node",
+      "webpack",
+      "webpack-env"
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "src/**/*.spec.ts",
+    "./tmp",
+    "node_modules",
+    "demo",
+    "dist"
+  ]
+}

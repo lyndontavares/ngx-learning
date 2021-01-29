@@ -1,0 +1,31 @@
+<div id="team">
+  <div class="container">
+    <h2 class="text-center">MEET OUR TEAM</h2>
+    <p class="text-center mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div class="row mt-4 ">
+      <div class="col-md-4 col-sm-12 mt-3 mb-4" *ngFor="let post of teams">
+        <div class="card">
+          <img class="card-img-top" [src]="post.image" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{post.name}}</h5>
+            <i>{{post.position}}</i>
+            <p class="card-text mt-3">{{post.desc}}</p>
+          </div>
+          <div class="card-footer">
+            <div class="row">
+              <a href="#" class="col facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="col twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="col pinterest">
+                <i class="fab fa-pinterest-p"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

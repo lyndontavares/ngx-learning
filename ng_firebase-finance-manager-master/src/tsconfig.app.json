@@ -1,0 +1,16 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"target": "es5",
+		"outDir": "../out-tsc/app",
+		"baseUrl": "./",
+		"module": "es2015",
+		"types": [
+			"lodash"
+		]
+	},
+	"exclude": [
+		"test.ts",
+		"**/*.spec.ts"
+	]
+}

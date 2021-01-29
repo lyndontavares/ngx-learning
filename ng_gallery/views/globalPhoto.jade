@@ -1,0 +1,13 @@
+extends layout
+
+block links
+  link(rel='stylesheet', href='/css/loggedInNavbar.css')
+
+block content
+  #photoWrapper
+    h1 Photo Details
+    img(src=photo.url)
+    h2 user: #{photo.userId.username}
+    h3 #{photo.filename}
+    h3 date added: #{photo.dateAdded}
+    

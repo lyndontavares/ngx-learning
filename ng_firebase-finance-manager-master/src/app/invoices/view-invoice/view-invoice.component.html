@@ -1,0 +1,243 @@
+<h4 class="page-title">Invoice Summary</h4>
+
+<div *ngIf="!invoice || !itemsData.data" class="spinner-container">
+
+	<mat-spinner></mat-spinner>
+
+</div>
+
+<mat-card *ngIf="itemsData.data" fxLayout="column" fxLayoutGap="50px" class="page-card">
+
+    <div *ngIf="invoice" class="details-container" fxLayout="row">
+
+        <div class="detail-field">
+
+            <b>Invoice ID</b>
+
+            <p># {{invoice.invoiceId}}</p>
+
+        </div>
+
+        <div class="detail-field">
+
+            <b>Reference</b>
+
+            <p>{{invoice.reference}}</p>
+
+        </div>
+
+        <div class="detail-field">
+
+            <b>Date</b>
+
+            <p>{{invoice.date.toDate() | date: 'dd/MM/yyyy'}}</p>
+
+        </div>
+
+        <div class="detail-field">
+
+            <b>Recipient</b>
+
+            <p routerLink="/contacts/{{invoice.contact.id}}">{{invoice.contact.name}}</p>
+
+        </div>
+
+        <div class="detail-field">
+
+            <b>Total</b>
+
+            <p>{{invoice.total | currency: 'GBP'}}</p>
+
+        </div>
+
+        <div class="detail-field">
+
+            <b>Remainder Due</b>
+
+            <p>{{invoice.remainderDue | currency: 'GBP'}}</p>
+
+        </div>
+
+        <div class="detail-field">
+
+			<b>Status</b>
+			
+			<p *ngIf="!invoice.posted">Unposted<span style="color: #F44336" class="material-icons status-indicator">fiber_manual_record</span></p>
+
+            <p *ngIf="invoice.posted">{{ invoice.paid ? 'Paid' : 'Unpaid' }}<span [ngStyle]="{ 'color': invoice.paid ? '#8DE700' : '#F44336' }" class="material-icons status-indicator">fiber_manual_record</span></p>
+
+        </div>
+
+    </div>
+	
+	<div *ngIf="itemsData.data">
+	
+		<mat-card-subtitle>Items:</mat-card-subtitle>
+
+		<mat-table itemsTable [dataSource]="itemsData" matSort matSort matSortActive="itemId" matSortDirection="asc" class="mat-elevation-z0">
+
+			<ng-container matColumnDef="description">
+
+				<mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="25%">Description</mat-header-cell>
+
+				<mat-cell *matCellDef="let item" fxFlex="25%">{{item.description}}</mat-cell>
+
+				<mat-footer-cell *matFooterCellDef fxFlex="25%"></mat-footer-cell>
+
+			</ng-container>
+
+			<ng-container matColumnDef="quantity">
+
+				<mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%">Quantity</mat-header-cell>
+
+				<mat-cell *matCellDef="let item" fxFlex="10%">{{item.quantity | number: 0}}</mat-cell>
+
+				<mat-footer-cell *matFooterCellDef fxFlex="10%"></mat-footer-cell>
+
+			</ng-container>
+
+			<ng-container matColumnDef="unitPrice">
+
+				<mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%">Unit Price</mat-header-cell>
+
+				<mat-cell *matCellDef="let item" fxFlex="10%">{{item.unitPrice | currency: 'GBP'}}</mat-cell>
+
+				<mat-footer-cell *matFooterCellDef fxFlex="10%"></mat-footer-cell>
+
+			</ng-container>
+
+			<ng-container matColumnDef="subtotal">
+
+				<mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%">Subtotal</mat-header-cell>
+
+				<mat-cell *matCellDef="let item" fxFlex="10%">{{item.subtotal | currency: 'GBP'}}</mat-cell>
+
+				<mat-footer-cell *matFooterCellDef fxFlex="10%">{{invoice.subtotal | currency: 'GBP'}}</mat-footer-cell>
+
+			</ng-container>
+
+			<ng-container matColumnDef="taxCode">
+
+				<mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="20%">Tax Code</mat-header-cell>
+
+				<mat-cell *matCellDef="let item" fxFlex="20%">{{item.taxCode.name}}</mat-cell>
+
+				<mat-footer-cell *matFooterCellDef fxFlex="20%"></mat-footer-cell>
+
+			</ng-container>
+
+			<ng-container matColumnDef="tax">
+
+				<mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%">Tax</mat-header-cell>
+
+				<mat-cell *matCellDef="let item" fxFlex="10%">{{item.tax | currency: 'GBP'}}</mat-cell>
+
+				<mat-footer-cell *matFooterCellDef fxFlex="10%">{{invoice.tax | currency: 'GBP'}}</mat-footer-cell>
+
+			</ng-container>
+
+			<ng-container matColumnDef="total">
+
+				<mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="15%">Total</mat-header-cell>
+
+				<mat-cell *matCellDef="let item" fxFlex="15%">{{item.total | currency: 'GBP'}}</mat-cell>
+
+				<mat-footer-cell *matFooterCellDef fxFlex="15%">{{invoice.total | currency: 'GBP'}}</mat-footer-cell>
+
+			</ng-container>
+
+			<mat-header-row *matHeaderRowDef="itemsTableColumns"></mat-header-row>
+
+			<mat-row *matRowDef="let row; columns: itemsTableColumns" (click)="editItem(row)"></mat-row>
+
+			<mat-footer-row *matFooterRowDef="itemsTableColumns"></mat-footer-row>
+
+		</mat-table>
+
+		<mat-paginator [pageSize]="25" [pageSizeOptions]="[ 10, 25, 50 ]" [showFirstLastButtons]="true" class="mat-elevation-z0"></mat-paginator>
+			
+	</div>
+
+	<div *ngIf="invoice.posted && paymentsData.data">
+	
+		<mat-card-subtitle>Payments:</mat-card-subtitle>
+
+		<mat-table #paymentsTable [dataSource]="paymentsData" class="mat-elevation-z0">
+
+			<ng-container matColumnDef="reference">
+
+				<mat-header-cell *matHeaderCellDef fxFlex="25%">Reference</mat-header-cell>
+
+				<mat-cell *matCellDef="let payment" fxFlex="25%">{{payment.reference}}</mat-cell>
+
+				<mat-footer-cell *matFooterCellDef fxFlex="25%"></mat-footer-cell>
+
+			</ng-container>
+
+			<ng-container matColumnDef="date">
+
+				<mat-header-cell *matHeaderCellDef fxFlex="25%">Date</mat-header-cell>
+
+				<mat-cell *matCellDef="let payment" fxFlex="25%">{{payment.date.toDate() | date: 'dd/MM/yyyy'}}</mat-cell>
+
+				<mat-footer-cell *matFooterCellDef fxFlex="25%"></mat-footer-cell>
+
+			</ng-container>
+
+			<ng-container matColumnDef="amount">
+
+				<mat-header-cell *matHeaderCellDef fxFlex="25%">Amount</mat-header-cell>
+
+				<mat-cell *matCellDef="let payment" fxFlex="25%">{{payment.amount | currency: 'GBP'}}</mat-cell>
+
+				<mat-footer-cell *matFooterCellDef fxFlex="25%">{{totalPaid | currency: 'GBP'}}</mat-footer-cell>
+
+			</ng-container>
+
+			<ng-container matColumnDef="bank">
+
+				<mat-header-cell *matHeaderCellDef fxFlex="25%">Bank Account</mat-header-cell>
+
+				<mat-cell *matCellDef="let payment" fxFlex="25%">{{payment.bank.accountReference}}</mat-cell>
+
+				<mat-footer-cell *matFooterCellDef fxFlex="25%"></mat-footer-cell>
+
+			</ng-container>
+
+			<mat-header-row *matHeaderRowDef="paymentsTableColumns"></mat-header-row>
+
+			<mat-row *matRowDef="let row; columns: paymentsTableColumns"></mat-row>
+
+			<mat-footer-row *matFooterRowDef="paymentsTableColumns"></mat-footer-row>
+
+		</mat-table>
+		
+	</div>
+	
+	<mat-card-actions *ngIf="invoice">
+	
+		<button mat-button routerLink="/invoices/all">Back</button>
+	
+		<button mat-button *ngIf="!invoice.posted" routerLink="/invoices/{{invoice.id}}/edit">Edit Invoice</button>
+	
+		<button mat-button *ngIf="invoice.posted && !paymentsData.data.length" (click)="unpostInvoice()">Unpost Invoice</button>
+
+		<button mat-button *ngIf="invoice.posted && !invoice.paid" (click)="addPayment()">Add Payment</button>
+	
+		<button mat-button (click)="deleteInvoice(userId, invoiceId)">Delete Invoice</button>
+
+		<button mat-button [matMenuTriggerFor]="moreOptions">More...</button>
+
+		<mat-menu #moreOptions="matMenu">
+
+			<button mat-menu-item appDownloadInvoicePdf>Download PDF</button>
+
+			<button mat-menu-item appEmailInvoice>Send by Email</button>
+
+			<button mat-menu-item appDuplicateInvoice>Duplicate Invoice</button>
+
+		</mat-menu>
+	
+	</mat-card-actions>
+
+</mat-card>

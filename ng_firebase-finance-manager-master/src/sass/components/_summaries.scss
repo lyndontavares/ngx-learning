@@ -1,0 +1,44 @@
+.details-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 40px;
+	
+	.detail-field {
+		display: flex;
+		flex-direction: column;
+//		min-width: 10vw;
+		margin-right: 50px;
+		
+		b {
+			font-weight: 400;
+			color: #797C82;
+			font-size: 12px;
+		}
+		
+		p {
+			display: flex;
+			align-items: center;
+			font-size: 14px;
+			max-width: 30vw;
+			
+			span.status-indicator {
+				font-size: 10px;
+				color: #8DE700;
+				margin-left: 5px;
+			}
+		}
+	}
+	
+	&.secondary {
+		justify-content: flex-start;
+		
+		.detail-field {
+			min-width: 5vw;
+			
+			p {
+				font-size: 13px;
+			}
+		}
+	}
+}

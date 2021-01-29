@@ -1,0 +1,133 @@
+ 
+ 
+	<td-layout-nav [toolbarTitle]="name" navigationRoute="/">
+		<button mat-icon-button td-menu-button tdLayoutToggle>
+      <mat-icon>menu</mat-icon>
+    </button>
+		<div td-toolbar-content layout="row" layout-align="start center" flex>
+		</div>
+		<td-layout-manage-list #manageList [opened]="media.registerQuery('gt-sm') | async" [mode]="(media.registerQuery('gt-sm') | async) ? 'side' :  'over'"
+		 [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '257px' : '100%'">
+			<mat-toolbar td-sidenav-content>
+				<mat-icon class="push-left-xs">build</mat-icon>
+				<span class="push-left">Console</span>
+			</mat-toolbar>
+			<mat-nav-list td-sidenav-content [tdLayoutManageListClose]="!media.query('gt-sm')">
+				<a mat-list-item>
+					<mat-icon matListIcon>dashboard</mat-icon> Overview
+				</a>
+				<h3 matSubheader>Management</h3>
+				<ng-template let-item let-last="last" ngFor [ngForOf]="mgmtmenu">
+					<a mat-list-item>
+						<mat-icon matListIcon>{{item.icon}}</mat-icon> {{item.title}}
+					</a>
+				</ng-template>
+				<h3 matSubheader>Monitor</h3>
+				<ng-template let-item let-last="last" ngFor [ngForOf]="monitormenu">
+					<a mat-list-item>
+						<mat-icon matListIcon>{{item.icon}}</mat-icon> {{item.title}}
+					</a>
+				</ng-template>
+				<h3 matSubheader>Settings</h3>
+				<ng-template let-item let-last="last" ngFor [ngForOf]="settingsmenu">
+					<a mat-list-item>
+						<mat-icon matListIcon>{{item.icon}}</mat-icon> {{item.title}}
+					</a>
+				</ng-template>
+			</mat-nav-list>
+			<mat-toolbar>
+				<div layout="row" layout-align="start center" flex>
+					<button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
+              <mat-icon>arrow_back</mat-icon>
+            </button>
+					<span>Users</span>
+					<span flex></span>
+					<button routerLink="/form" mat-raised-button color="primary" class="text-upper">Create</button>
+					
+					<span>
+						<button mat-icon-button matTooltip="More" [mat-menu-trigger-for]="more">
+							<mat-icon>more_vert</mat-icon>
+						</button>
+						<mat-menu xPosition="before" #more="matMenu">
+								<button mat-menu-item *ngIf="activeTheme === 'theme-dark'" (click)="theme('theme-light')">
+									<mat-icon>brightness_high</mat-icon>
+									<span>Light Mode</span>
+								</button>
+								<button mat-menu-item *ngIf="activeTheme != 'theme-dark'" (click)="theme('theme-dark')">
+									<mat-icon>brightness_low</mat-icon>
+									<span>Dark Mode</span>
+								</button>
+						</mat-menu>
+					</span>
+
+
+				</div>
+			</mat-toolbar>
+			<mat-card>
+				<div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+					<span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+      <span class="mat-title">Title here</span>
+					</span>
+					<td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here" (searchDebounce)="search($event)"
+					 flex>
+					</td-search-box>
+					<span>
+      <button mat-icon-button [matMenuTriggerFor]="toolbarMenu"><mat-icon>more_vert</mat-icon></button>
+      <mat-menu #toolbarMenu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+					</button>
+					</mat-menu>
+					</span>
+				</div>
+				<mat-divider></mat-divider>
+				<mat-list>
+					<mat-list-item>
+						<mat-icon matListAvatar>apps</mat-icon>
+						<h3 matLine>App Name</h3>
+						<span flex></span>
+						<span hide-xs flex="30" class="pad-left mat-body-1 tc-grey-500">Owner</span>
+						<span hide-xs class="md-sort-header" flex="40" layout="row" layout-align="center center" class="pad-left mat-body-1 tc-grey-500">
+        <mat-select flex="90" [(ngModel)]="sortKey">
+          <mat-option *ngFor="let option of columnOptions" [value]="option.value" (click)="sortBy(sortKey)">
+            {{option.name}}
+          </mat-option>
+        </mat-select>
+      </span>
+						<a hide-xs class="md-sort-header" (click)="sortBy(sortKey)">
+							<span layout="row" layout-align="start center" flex>
+          <mat-icon class="md-sort-icon">{{isASC(sortKey)? 'arrow_upward' : 'arrow_downward'}}</mat-icon>
+        </span>
+						</a>
+					</mat-list-item>
+					<mat-divider></mat-divider>
+					<ng-template let-item let-last="last" ngFor [ngForOf]="data">
+						<mat-list-item>
+							<mat-icon matListAvatar>desktop_mac</mat-icon>
+							<h3 matLine> {{item.name}} </h3>
+							<span flex></span>
+							<span hide-xs flex="10">
+          {{item.owner}}
+        </span>
+							<span hide-xs flex="60" class="text-right mat-body-1 tc-grey-500 pad-right">
+          {{item[sortKey] | date:'short'}}
+        </span>
+						</mat-list-item>
+						<mat-divider *ngIf="!last" matInset></mat-divider>
+					</ng-template>
+				</mat-list>
+				<mat-divider></mat-divider>
+				<td-paging-bar #pagingBar [pageSize]="pageSize" total="20">
+					<span hide-xs>Rows per page:</span>
+					<mat-select [style.width.px]="50" [(ngModel)]="pageSize">
+						<mat-option *ngFor="let size of [5,10,15,20]" [value]="size">
+							{{size}}
+						</mat-option>
+					</mat-select>
+					{{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+				</td-paging-bar>
+			</mat-card>
+		</td-layout-manage-list>
+	</td-layout-nav>
+ 

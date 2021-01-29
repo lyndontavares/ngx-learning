@@ -1,0 +1,44 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar>Features</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/angular']">Template Expression</a>
+      <a mat-list-item [routerLink]="['/di']">Injeção de dependência</a>
+      <a mat-list-item [routerLink]="['/form']">Formulários</a>
+      <a mat-list-item [routerLink]="['/event']">Eventos</a>
+      <a mat-list-item [routerLink]="['/input']">Comunicação entre componentes</a>
+      <a mat-list-item [routerLink]="['/inter']">Interpolation</a>
+      <a mat-list-item [routerLink]="['/lista']">Lista</a>
+      <a mat-list-item [routerLink]="['/class']">ngClass</a>
+      <a mat-list-item [routerLink]="['/for']">ngFor</a>
+      <a mat-list-item [routerLink]="['/if']">ngIf</a>
+      <a mat-list-item [routerLink]="['/style']">style</a>
+      <a mat-list-item [routerLink]="['/switch']">switch</a>
+      <a mat-list-item [routerLink]="['/property']">property</a>
+      <a mat-list-item [routerLink]="['/twoway']">Two-way</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Angular 7 - Features</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <div style="padding: 0px 0px 0px 20px">
+    <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

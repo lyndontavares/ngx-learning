@@ -1,0 +1,37 @@
+mat-toolbar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	display: block;
+	z-index: 999;
+    background: mat-color($primary) !important;
+	
+	* {
+		color: #fff;
+	}
+	
+	mat-toolbar-row,
+    mat-toolbar-row.mat-toolbar-row,
+    mat-toolbar-row.mat-toolbar-single-row {
+		padding: 0 15px;
+	}
+	
+	h5 {
+		cursor: pointer;
+		font-size: 15px !important;
+		font-weight: 400 !important;
+	}
+	
+	span.toolbar-spacer {
+		flex: 1 1 auto;
+	}
+    
+    button {
+        font-weight: 400;
+        
+        .mat-icon {
+            font-size: 18px;
+        }
+    }
+}

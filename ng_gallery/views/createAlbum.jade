@@ -1,0 +1,15 @@
+extends layout
+
+block links
+  link(rel='stylesheet', href='/css/loggedInNavbar.css')
+
+block content
+  h1 Add an album to your collection
+  form#addAlbumForm
+    .form-group
+      label(for='title') Album title:
+      input#title.form-control(type='text', placeholder='album title')
+    button.btn.btn-info(type='submit') Add Albumn
+
+block scripts
+  script(src="/js/createAlbum.js")

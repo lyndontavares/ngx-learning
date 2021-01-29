@@ -1,0 +1,69 @@
+<h4 class="page-title">Notifications</h4>
+
+<div *ngIf="!notifService.notifications" class="spinner-container">
+
+	<mat-spinner></mat-spinner>
+
+</div>
+
+<mat-sidenav #notificationsMenu mode="push" position="end" opened fxFlex="20vw">
+
+  <mat-nav-list>
+
+    <mat-list-item *ngIf="!notifService.notifications.length">You have no notifications</mat-list-item>
+
+    <ng-container *ngIf="notifService.notifications.length">
+
+      <ng-template *ngFor="let notification of notifService.notifications; first as first; last as last">
+
+        <a mat-list-item>{{notification.title}}</a>
+
+        <mat-divider></mat-divider>
+
+      </ng-template>
+
+    </ng-container>
+
+  </mat-nav-list>
+
+</mat-sidenav>
+
+
+
+<!-- <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap="25px" [ngStyle.gt-xs]="{'align-items': 'stretch', 'min-height': 'calc(100% - 45px)'}">
+
+  <mat-card fxFlex.xs="100%" fxFlex.gt-xs="25%">
+
+    <mat-nav-list>
+
+      <mat-list-item *ngIf="!notifService.notifications.length">You have no notifications</mat-list-item>
+
+      <ng-container *ngIf="notifService.notifications.length">
+
+        <ng-container *ngFor="let notification of notifService.notifications; last as last">
+
+          <a mat-list-item class="notification" [class.unread]="!notification.read">
+            
+            <span matLine class="notification-title">{{notification.title}}</span>
+
+            <span matLine class="notification-description">{{notification.description}}</span>
+
+          </a>
+
+          <mat-divider *ngIf="!last"></mat-divider>
+
+        </ng-container>
+
+      </ng-container>
+
+    </mat-nav-list>
+
+  </mat-card>
+
+  <mat-card fxFlex.xs="100%" fxFlex.gt-xs="75%" fxLayout="column" class="page-card">
+
+    <pre>{{notifService.selectedNotification | json}}</pre>
+
+  </mat-card>
+
+</div> -->

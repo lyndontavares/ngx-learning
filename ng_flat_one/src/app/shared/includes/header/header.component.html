@@ -1,0 +1,32 @@
+<nav #navbar class="navbar fixed-top navbar-expand-lg navbar-light" [style.background-color]="'rgba(250, 250, 250,' + bgOpacity + ')'">
+  <div class="container">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <ul class="navbar-nav" (click)="toggle()">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#services">services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#portfolio">portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#blog">blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact-us">contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

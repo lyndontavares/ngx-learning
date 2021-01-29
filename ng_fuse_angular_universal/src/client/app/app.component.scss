@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  flex: 1 0;
+  flex-direction: column;
+  .sidenav-container {
+    overflow-y: auto;
+    flex: 1 0;
+    flex-direction: column;
+  }
+  .sidenav {
+    width: 256px;
+  }
+  #menu-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    mat-slide-toggle {
+      margin-right: 1em;
+    }
+  }
+  ::ng-deep mat-sidenav-container {
+    mat-sidenav {
+      visibility: hidden;
+    }
+  }
+}

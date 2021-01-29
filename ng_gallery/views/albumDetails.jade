@@ -1,0 +1,47 @@
+extends layout
+
+block links
+  link(rel='stylesheet', href='/css/loggedInNavbar.css')
+
+block content
+  .row
+    .col-xs-3
+      #albumPage
+        img(src=album.coverImg)
+    .col-xs-9
+      h1 #{album.title} Album
+      
+  .page-header
+    h2 Add images to album
+    form(action=`/photos/${album.id}`, method='post', enctype='multipart/form-data')
+      .form-group
+        input(type='file', name='images', multiple=true)
+      button.btn.btn-info Submit
+  br
+  br
+  if photos.length  
+    table.table.table-hover
+      thead
+        tr
+          th Preview thumbnail 
+          th Photo name
+          th Date added
+          th Delete
+      tbody
+        each photo in photos
+          tr.dataRow(data-photo = photo.id)
+            td 
+              a(href=`/profile/${photo._id}`)
+                img.imageIcon(src=photo.url)
+            td.name.searchable #{photo.filename}
+            td #{photo.dateAdded}
+            td 
+              button#delete.btn.btn-danger
+                span.glyphicon.glyphicon-trash
+  else
+    #noPhotos
+      h2 There are no photos in this album.
+      h4 Add some photos to begin.
+    
+block scripts
+  script(src="/js/albumDetails.js")

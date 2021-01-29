@@ -1,0 +1,225 @@
+<div *ngIf="view$ | async as view" [ngSwitch]="view.isEditing" class="vert-flex-fill">
+  <div *ngSwitchCase="true" class="vert-flex-fill">
+    <mat-tab-group [selectedIndex]="view.currentTab" (selectedIndexChange)="updateTabParam($event)">
+      <mat-tab label="Content">
+        <pm-quill-editor [content]="view.page.content"></pm-quill-editor>
+      </mat-tab>
+      <mat-tab label="Settings">
+        <form [formGroup]="settingsForm" id="settingsForm" novalidate class="settings" *ngIf="view.currentTab === 1">
+          <mat-accordion class="example-headers-align">
+            <mat-expansion-panel hideToggle="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Basic Info
+                </mat-panel-title>
+                <mat-panel-description>
+                  Title, description, and other page information
+                  <mat-icon fontSet="fa" fontIcon="fa-info" aria-hidden="true"></mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="field-spacer">
+                <mat-form-field>
+                  <input matInput placeholder="Title" type="text" formControlName="title">
+                  <mat-hint align="end">appears in
+                    <em>title</em> and
+                    <em>meta:og:title</em>
+                  </mat-hint>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Description" type="text" formControlName="description">
+                  <mat-hint align="end">appears in
+                    <em>meta:name:description</em> and
+                    <em>meta:og:description</em>
+                  </mat-hint>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Type" type="text" formControlName="type">
+                  <mat-hint align="end">appears in
+                    <em>meta:type</em>
+                  </mat-hint>
+                </mat-form-field>
+              </div>
+              <div class="field-spacer">
+                <mat-form-field>
+                  <input matInput placeholder="Published" [matDatepicker]="picker" formControlName="articlePublishedTime" (focus)="picker.open()">
+                  <mat-datepicker touchUi="true" #picker></mat-datepicker>
+                  <mat-hint align="end">appears in
+                    <em>meta:og:article:published_time</em>
+                  </mat-hint>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Modified" [matDatepicker]="pickerModified" formControlName="articleModifiedTime" (focus)="pickerModified.open()">
+                  <mat-datepicker touchUi="true" #pickerModified></mat-datepicker>
+                  <mat-hint align="end">appears in
+                    <em>meta:og:article:modified_time</em>
+                  </mat-hint>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Expiration" [matDatepicker]="pickerExpired" formControlName="articleExpirationTime" (focus)="pickerExpired.open()">
+                  <mat-datepicker touchUi="true" #pickerExpired></mat-datepicker>
+                  <mat-hint align="end">appears in
+                    <em>meta:og:article:expiration_time</em>
+                  </mat-hint>
+                </mat-form-field>
+              </div>
+              <div class="field-spacer">
+                <mat-form-field>
+                  <input matInput placeholder="Author" type="text" formControlName="articleAuthor">
+                  <mat-hint align="end">appears in
+                    <em>meta:og:article:author</em>
+                  </mat-hint>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Section" type="text" formControlName="articleSection">
+                  <mat-hint align="end">appears in
+                    <em>meta:og:article:section</em>
+                  </mat-hint>
+                </mat-form-field>
+              </div>
+              <div class="field-spacer">
+                <mat-form-field>
+                  <!-- <input matInput placeholder="Tags" type="text" formControlName="articleTag"> -->
+                  <mat-chip-list #chipList>
+                    <mat-chip *ngFor="let tag of tags; trackBy: trackByTag" [selectable]="selectable">
+                      {{ tag }}
+                      <mat-icon fontSet="fa" fontIcon="fa-times" aria-hidden="true" (click)="remove(tag)"></mat-icon>
+                    </mat-chip>
+                    <input placeholder="New tag..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                      (matChipInputTokenEnd)="add($event)" />
+                  </mat-chip-list>
+                  <mat-hint align="end">appears in
+                    <em>meta:og:article:tag</em>
+                  </mat-hint>
+                </mat-form-field>
+              </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel hideToggle="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Caching
+                </mat-panel-title>
+                <mat-panel-description>
+                  HTTP cache settings
+                  <mat-icon fontSet="fa" fontIcon="fa-globe" aria-hidden="true"></mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <pm-cache-form (cacheChange)="updateCache($event)" [cache]="cacheSettings"></pm-cache-form>
+            </mat-expansion-panel>
+            <mat-expansion-panel hideToggle="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Images
+                </mat-panel-title>
+                <mat-panel-description>
+                  Image settings for the Open Graph protocol
+                  <mat-icon fontSet="fa" fontIcon="fa-picture-o" aria-hidden="true"></mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="field-spacer">
+                <mat-form-field>
+                  <input matInput placeholder="Image URL" type="text" formControlName="imgUrl">
+                  <mat-hint align="end">appears in
+                    <em>meta:og:image</em>
+                  </mat-hint>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Image Alternate Text" type="text" formControlName="imgAlt">
+                  <mat-hint align="end">appears in
+                    <em>meta:og:image:alt</em>
+                  </mat-hint>
+                </mat-form-field>
+              </div>
+              <div class="field-spacer">
+                <mat-form-field>
+                  <input matInput placeholder="Image Height" type="number" formControlName="imgHeight">
+                  <mat-hint align="end">appears in
+                    <em>meta:og:image:height</em>
+                  </mat-hint>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Image Width" type="number" formControlName="imgWidth">
+                  <mat-hint align="end">appears in
+                    <em>meta:og:image:width</em>
+                  </mat-hint>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Image Mime Type" type="text" formControlName="imgMime">
+                  <mat-hint align="end">appears in
+                    <em>meta:og:image:type</em>
+                  </mat-hint>
+                </mat-form-field>
+              </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel hideToggle="true" disabled>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Music
+                </mat-panel-title>
+                <mat-panel-description>
+                  Music settings for the Open Graph protocol
+                  <mat-icon fontSet="fa" fontIcon="fa-music" aria-hidden="true"></mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+            <mat-expansion-panel hideToggle="true" disabled>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Videos
+                </mat-panel-title>
+                <mat-panel-description>
+                  Video settings for the Open Graph protocol
+                  <mat-icon fontSet="fa" fontIcon="fa-video-camera" aria-hidden="true"></mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <br>
+          <mat-slide-toggle formControlName="userCommentsEnabled">User Comments Enabled</mat-slide-toggle>
+          <mat-slide-toggle formControlName="isDraft">Draft</mat-slide-toggle>
+        </form>
+      </mat-tab>
+      <mat-tab label="Dynamic Code & Styling">
+        <div class="pad-tab">
+          <h3 mat-subheader>Add custom css and javascript for this page</h3>
+          <div class="card-list" *ngFor="let keyVal of injections$ | async | pmKeyVal; trackBy: trackByInjection">
+            <button mat-icon-button>
+              <mat-icon fontSet="fa" fontIcon="fa-minus-circle" color="warn" aria-hidden="true" (click)="removeInjectable(keyVal.key)"></mat-icon>
+            </button>
+            <mat-card>
+              <mat-form-field>
+                <input matInput placeholder="Name" type="text" [value]="keyVal.key" #keyTest (keydown)="injectionFormChange($event, keyVal.value.type, $event)">
+              </mat-form-field>
+              <div [ngSwitch]="keyVal.value.type">
+                <pm-injection-form *ngSwitchCase="'style'" [injectable]="keyVal.value" showDomString="true" (formChange)="injectionFormChange(keyTest.value, keyVal.value.type, $event)"></pm-injection-form>
+                <pm-injection-form *ngSwitchCase="'script'" [injectable]="keyVal.value" showDomString="true" (formChange)="injectionFormChange(keyTest.value, keyVal.value.type, $event)"></pm-injection-form>
+              </div>
+            </mat-card>
+          </div>
+          <br>
+          <div>
+            <button mat-raised-button color="primary" (click)="addInjectable('style')">Add CSS</button>
+            <button mat-raised-button color="primary" (click)="addInjectable('script')">Add JavaScript</button>
+          </div>
+          <br>
+        </div>
+      </mat-tab>
+      <mat-tab label="Relationships" disabled>
+      </mat-tab>
+      <mat-tab label="Privileges" disabled>
+      </mat-tab>
+      <mat-tab label="Change History" disabled>
+      </mat-tab>
+    </mat-tab-group>
+    <footer class="footer mat-elevation-z6">
+      <button mat-button color="warn" (click)="delete()">Delete</button>
+      <button mat-button (click)="viewCurrent()">View Current</button>
+      <button mat-raised-button color="primary" (click)="publish()" [disabled]="settingsForm.invalid">Publish</button>
+    </footer>
+  </div>
+  <div *ngSwitchCase="false" class="vert-flex-fill">
+    <div pmHtmlOutlet [html]="view.page.content | pmSanitizeHtml"></div>
+    <footer class="footer mat-elevation-z6">
+      <button *ngIf="view.canEdit" mat-raised-button color="accent" (click)="edit()">Edit</button>
+    </footer>
+  </div>
+</div>

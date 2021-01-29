@@ -1,0 +1,17 @@
+<td-layout #layout>
+  <td-navigation-drawer flex [sidenavTitle]="name" logo="assets:covalent" name="Usuário" email="lyndon.tavares@datapar.com.py">
+      <mat-nav-list>
+          
+          <a *ngFor="let item of routes" mat-list-item>
+              
+              <div [routerLink]=[(item.route)] (click)="layout.close()" >
+                  <mat-icon>{{item.icon}}</mat-icon>{{item.title}}
+              </div>        
+          </a>
+          
+      </mat-nav-list>
+  </td-navigation-drawer>
+
+<router-outlet></router-outlet>
+
+</td-layout>

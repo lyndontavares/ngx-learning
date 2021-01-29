@@ -1,0 +1,241 @@
+<mat-toolbar *ngIf="isAuthenticated">
+
+	<mat-toolbar-row>
+
+		<h5 class="toolbar-title" routerLink="/dashboard">{{isAuthenticated ? user.email : 'Angular 5 Firebase App'}}</h5>     
+
+		<span class="toolbar-spacer"></span>
+	
+		<button mat-icon-button [matMenuTriggerFor]="notificationsMenu">
+
+			<mat-icon aria-label="Notifications button">{{notifications.length ? 'notifications_active' : 'notifications_none'}}</mat-icon>
+
+        </button>
+        
+        <mat-menu #notificationsMenu>
+
+            <button *ngFor="let notification of notifications" mat-menu-item class="two-line">
+                
+                <span>{{notification.title}}</span>
+
+                <span>{{notification.description}}</span>
+            
+            </button>
+
+        </mat-menu>
+	
+		<button mat-icon-button [matMenuTriggerFor]="toolbarOptionsMenu">
+
+			<mat-icon aria-label="More Options Button">more_vert</mat-icon>
+
+		</button>
+		
+		<mat-menu #toolbarOptionsMenu>
+           
+            <button mat-menu-item>Settings</button>
+            
+            <button mat-menu-item>Help</button>
+            
+            <button mat-menu-item (click)="signOut(); expandInvoices=false; expandExpenses=false; expandContacts=false">Sign Out</button>
+            
+        </mat-menu>
+
+	</mat-toolbar-row>
+
+</mat-toolbar>
+
+<mat-sidenav-container *ngIf="isAuthenticated">
+	
+    <mat-sidenav id="navbar" fxHide fxShow.gt-sm fxLayout="column" fxFlex="20vw" mode="side" opened>
+
+        <mat-nav-list>
+            
+            <a mat-list-item routerLink="/dashboard" routerLinkActive="active-route">
+            
+                <div class="nav-item-content">
+			
+                    <mat-icon>home</mat-icon>
+
+                    <span>Home</span>
+				
+                </div>
+			
+			</a>    
+            
+            <a mat-list-item (click)="expandInvoices = !expandInvoices; expandExpenses=false; expandContacts=false" routerLinkActive="active-route" [class.expanded]="expandInvoices">
+            
+                <div class="nav-item-content" fxLayout="row" fxLayoutAlign="space-between center">
+					
+					<div fxLayout="row" fxLayoutAlign="space-between center">
+			
+						<mat-icon>attach_money</mat-icon>
+
+						<span>Invoices</span>
+						
+					</div>
+				
+					<div fxLayout="row" fxLayoutAlign="end center">
+
+						<mat-icon class="expand-arrow">{{expandInvoices ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+
+					</div>
+				
+                </div>
+			
+			</a>
+				
+            <mat-nav-list *ngIf="expandInvoices" class="nav-section-submenu">
+
+                <a mat-list-item routerLink="/invoices/new" routerLinkActive="active-route">
+            
+                    <div class="nav-item-content">
+                
+                        New Invoice
+                    
+                    </div>
+                    
+                </a>
+
+                <a mat-list-item routerLink="/invoices/all" routerLinkActive="active-route">
+            
+                    <div class="nav-item-content">
+                
+                        All Invoices
+                    
+                    </div>
+                    
+                </a>
+
+            </mat-nav-list>
+            
+            <a mat-list-item (click)="expandExpenses = !expandExpenses; expandInvoices=false; expandContacts=false" routerLinkActive="active-route" [class.expanded]="expandExpenses">
+            
+                <div class="nav-item-content" fxLayout="row" fxLayoutAlign="space-between center">
+					
+					<div fxLayout="row" fxLayoutAlign="space-between center">
+			
+						<mat-icon>money_off</mat-icon>
+
+						<span>Expenses</span>
+						
+					</div>
+				
+					<div fxLayout="row" fxLayoutAlign="end center">
+
+						<mat-icon class="expand-arrow">{{expandExpenses ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+
+					</div>
+				
+                </div>
+			
+			</a>
+				
+            <mat-nav-list *ngIf="expandExpenses" class="nav-section-submenu">
+
+                <a mat-list-item routerLink="/expenses/new" routerLinkActive="active-route">
+                
+                    <div class="nav-item-content">
+                    
+                        New Expense
+                        
+                    </div>
+                    
+                </a>
+
+                <a mat-list-item routerLink="/expenses/all" routerLinkActive="active-route">
+            
+                    <div class="nav-item-content">
+                
+                        All Expenses
+                    
+                    </div>
+                    
+                </a>
+
+            </mat-nav-list>
+            
+            <a mat-list-item routerLink="/bank" routerLinkActive="active-route">
+            
+                <div class="nav-item-content">
+			
+                    <mat-icon>account_balance</mat-icon>
+
+                    <span>Bank</span>
+                    
+                </div>
+			
+			</a>
+            
+            <a mat-list-item (click)="expandContacts = !expandContacts; expandInvoices=false; expandExpenses=false" routerLinkActive="active-route" [class.expanded]="expandContacts">
+            
+                <div class="nav-item-content" fxLayout="row" fxLayoutAlign="space-between center">
+					
+					<div fxLayout="row" fxLayoutAlign="space-between center">
+			
+						<mat-icon>person</mat-icon>
+
+						<span>Contacts</span>
+						
+					</div>
+				
+					<div fxLayout="row" fxLayoutAlign="end center">
+
+						<mat-icon class="expand-arrow">{{expandContacts ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+
+					</div>
+                    
+                </div>
+			
+			</a>
+				
+            <mat-nav-list *ngIf="expandContacts" class="nav-section-submenu">
+
+                <a mat-list-item routerLink="/contacts/new" routerLinkActive="active-route">
+                
+                    <div class="nav-item-content">
+                    
+                        New Contact
+                        
+                    </div>
+                    
+                </a>
+
+                <a mat-list-item routerLink="/contacts/all" routerLinkActive="active-route">
+            
+                    <div class="nav-item-content">
+                
+                        All Contacts
+                    
+                    </div>
+                    
+                </a>
+
+            </mat-nav-list>
+            
+            <a mat-list-item routerLink="/documents" routerLinkActive="active-route">
+            
+                <div class="nav-item-content">
+			
+                    <mat-icon>insert_drive_file</mat-icon>
+
+                    <span>Documents</span>
+                    
+                </div>
+			
+			</a>
+            
+        </mat-nav-list>
+    
+    </mat-sidenav>
+
+    <mat-sidenav-content fxFlex.xs="100vw" fxFlex.md="80vw" class="page-content">
+    
+        <router-outlet *ngIf="isAuthenticated"></router-outlet>
+    
+    </mat-sidenav-content>
+
+    <app-notifications></app-notifications>
+
+</mat-sidenav-container>
+
+<router-outlet *ngIf="!isAuthenticated"></router-outlet>

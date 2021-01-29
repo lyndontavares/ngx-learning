@@ -1,0 +1,15 @@
+<nav class="uk-navbar uk-margin-large-bottom">
+  <ul class="uk-navbar-nav uk-hidden-small">
+      <li class="uk-active">
+          <a routerLink="">Home</a>
+      </li>
+      <li>
+          <a routerLink="about">Galeria</a>
+      </li>
+  </ul>
+</nav>
+
+
+<main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">
+  <router-outlet #o="outlet"></router-outlet>
+</main>

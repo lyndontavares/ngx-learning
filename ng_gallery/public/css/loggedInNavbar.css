@@ -1,0 +1,77 @@
+th {
+  font-size: 39px;
+  font-family: 'Montez', cursive;
+}
+
+td {
+  font-size: 20px;
+  font-family: 'Josefin Slab', serif;
+}
+
+a > h3 {
+  color: snow;
+  font-size: 26px;
+}
+
+#delete {
+  vertical-align: middle;
+  text-align: center;
+}
+
+#changePassword, #logoutLink {
+  display: inherit;
+}
+
+#registerLink, #loginLink {
+  display: none;
+}
+
+#photoWrapper {
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+#photoWrapper img {
+  width: 40%;
+}
+
+#cover {
+  height: 125px;
+}
+
+#noPhotos {
+  text-align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 5px 0 15px 0;
+  color: black;
+  background-color: LightSteelBlue;
+  opacity: 0.9;
+}
+
+#albumPage img{
+  width: 200px;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+
+.imageIcon {
+  height: 80px;
+}
+
+.form-group {
+  font-size: 20px;
+}
+
+.page-header {
+  background-color: #ffffff;
+  opacity: 0.9;
+  padding: 10px 0 20px 10px;
+  border: 2px solid black;
+  border-radius: 6px;
+}
+
+.navbar-default {
+    background-color: #fbc15f;
+    border: 2px solid gray;
+}

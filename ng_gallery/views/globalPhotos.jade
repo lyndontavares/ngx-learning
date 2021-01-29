@@ -1,0 +1,29 @@
+extends layout
+
+block links
+  link(rel='stylesheet', href='/css/loggedInNavbar.css')
+
+block content
+  h1 Browse Photos
+      
+  table.table.table-hover
+    thead
+      tr
+        th Preview thumbnail 
+        th User
+        th Album Name
+        th Date Added
+
+    tbody
+      each photo in photos
+        tr.dataRow(data-photo = photo.id)
+          td 
+            a(href=`/globalPhotos/${photo._id}`)
+              img.imageIcon(src=photo.url)
+          td #{photo.userId.username}
+          td.name.searchable #{photo.albumId.title}
+          td.date.searchable #{photo.dateAdded}
+          
+    
+block scripts
+  script(src="/js/globalPhotos.js")

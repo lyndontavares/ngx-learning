@@ -1,0 +1,49 @@
+button.mat-button,
+.mat-button {
+
+	&:hover {
+		background: $white-hover !important;
+	}
+}
+
+button.mat-raised-button,
+.mat-raised-button {
+    background: mat-color($primary);
+    color: #fff !important;
+	font-weight: 400 !important;
+	@include transition;
+	
+	&.active-route {
+		background: $blue-dark !important;
+	}
+	
+	&[disabled] {
+		color: rgba(255, 255, 255, 0.5);
+		background: rgba(21, 101, 192, 0.6);
+	}
+}
+
+button.mat-icon-button,
+.mat-icon-button {
+	
+	mat-icon {
+		font-size: 16px;
+	}
+}
+
+button.mat-menu-item,
+.mat-menu-item {
+	font-size: 14px;
+}
+
+.secondary-link {
+    cursor: pointer;
+	color: $text-secondary;
+	font-size: 13px;
+	text-decoration: none;
+	@include transition;
+	
+	&:hover {
+		color: $blue-primary;
+	}
+}

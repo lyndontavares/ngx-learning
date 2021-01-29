@@ -1,0 +1,23 @@
+extends layout
+
+block links
+  link(rel='stylesheet', href='/css/loggedInNavbar.css')
+  link(rel='stylesheet', href='/css/profile.css')
+
+block content
+  h1 Hello, #{user.username}!
+  .row
+    .col-xs-6.col-xs-offset-1
+      a(href="/profile/albums")
+        .navIcon
+          h3 See My Albums
+    .col-xs-5
+      a(href="/profile/createAlbum")
+        .navIcon
+          h3 Create New Album
+  .row
+    .col-xs-offset-2.col-xs-8
+      a(href="/globalPhotos")
+        #browseIcon
+          h3 Browse Other Users' Photos
+    

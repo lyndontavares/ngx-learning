@@ -1,0 +1,63 @@
+<h4 class="page-title">All Contacts</h4>
+
+<div *ngIf="!contactsData.data.length" class="spinner-container">
+
+	<mat-spinner></mat-spinner>
+
+</div>
+
+<ng-container *ngIf="contactsData.data">
+
+	<mat-table *ngIf="contactsData" [dataSource]="contactsData" matSort matSortActive="contactId" matSortDirection="asc" class="mat-elevation-z1">
+
+		<ng-container matColumnDef="contactId">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%; flex: none">ID</mat-header-cell>
+
+			<mat-cell *matCellDef="let contact" style="width: 10%; flex: none">{{contact.contactId}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="name">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 25%; flex: none">Name</mat-header-cell>
+
+			<mat-cell *matCellDef="let contact" style="width: 25%; flex: none">{{contact.name}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="telephone">
+
+			<mat-header-cell *matHeaderCellDef style="width: 15%; flex: none">Telephone</mat-header-cell>
+
+			<mat-cell *matCellDef="let contact" style="width: 15%; flex: none">{{contact.primaryTelephone}}<span *ngIf="contact.secondaryTelephone.length">&nbsp;/&nbsp;{{contact.secondaryTelephone}}</span></mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="email">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 30%; flex: none">Email</mat-header-cell>
+
+			<mat-cell *matCellDef="let contact" style="width: 30%; flex: none">{{contact.primaryEmail}}<span *ngIf="contact.secondaryEmail.length">&nbsp;/&nbsp;{{contact.secondaryEmail}}</span></mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="vatNumber">
+
+			<mat-header-cell *matHeaderCellDef style="width: 15%; flex: none">VAT Number</mat-header-cell>
+
+			<mat-cell *matCellDef="let contact" style="width: 15%; flex: none">{{contact.vatNumber}}</mat-cell>
+
+		</ng-container>
+
+		<mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+
+		<mat-row *matRowDef="let row; columns: tableColumns" (click)="viewContact(row)"></mat-row>
+
+	</mat-table>
+
+	<mat-paginator *ngIf="contactsData" [pageSize]="25" [pageSizeOptions]="[ 10, 25, 50 ]" [showFirstLastButtons]="true" class="mat-elevation-z1"></mat-paginator>
+
+	<h5 *ngIf="!contactsData.data">No contacts found</h5>
+	
+</ng-container>

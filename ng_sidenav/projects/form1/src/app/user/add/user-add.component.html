@@ -1,0 +1,54 @@
+<mat-toolbar color="primary">
+    <span class="fill-remaining-space">Formulário Reativo usando rxweb</span>
+</mat-toolbar>
+
+<div class="container" >
+
+<form *ngIf="userFormGroup" [formGroup]="userFormGroup" class="form">
+
+
+    <mat-form-field class="form-element">
+        <input matInput placeholder="Primeiro Nome" formControlName="firstName">
+        <mat-error>
+            {{userFormGroup.controls.firstName.errorMessage}}
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+        <input matInput placeholder="Último Nome" formControlName="lastName">
+        <mat-error>
+            {{userFormGroup.controls.lastName.errorMessage}}
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+        <input matInput placeholder="Nome Usuário" formControlName="userName">
+        <mat-error>
+            {{userFormGroup.controls.userName.errorMessage}}
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+        <input matInput placeholder="Senha" type="password"  formControlName="password">
+        <mat-error>
+            {{userFormGroup.controls.password.errorMessage}}
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+        <input matInput placeholder="Cinfirme Senha" type="password"  formControlName="confirmPassword">
+        <mat-error>
+            {{userFormGroup.controls.confirmPassword.errorMessage}}
+        </mat-error>
+    </mat-form-field>
+
+     <div class="form-element">
+        <label>Nome Comleto : {{user.fullName}}</label>
+     </div>
+
+<div class="form-element">
+    <button mat-raised-button color="primary" [disabled]="!userFormGroup.valid"  class="button"  >Submit </button>
+</div>
+
+</form>
+</div>

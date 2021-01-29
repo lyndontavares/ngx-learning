@@ -1,0 +1,30 @@
+@import "../_variables";
+:host {
+    display: flex;
+    nav {
+        position: absolute;
+        height: 100vh;
+        width: $nav-width;
+        overflow: hidden;
+        z-index: 10;
+        transition: width 0.5s;
+        &.expand {
+            width: $nav-expand-width;
+        }
+    }
+    div {
+        position: absolute;
+        left: $nav-width;
+        width: calc(100vw - #{$nav-width});
+        header {
+            width: 100%;
+            height: $header-height;
+        }
+        perfect-scrollbar {
+            width: 100%;
+            height: calc(100vh - #{$header-height});
+            overflow: hidden;
+            padding: 25px 10px 0 10px;
+        }
+    }
+}

@@ -1,0 +1,119 @@
+<h4 class="page-title">Contact Summary</h4>
+
+<div *ngIf="!contact" class="spinner-container">
+
+	<mat-spinner></mat-spinner>
+
+</div>
+
+<mat-card *ngIf="contact" fxLayout="column" fxLayoutGap="50px" class="page-card">
+	
+	<div class="details-container" fxLayout="row">
+		
+		<div class="detail-field">
+		
+			<b>Contact ID</b>
+			
+			<p># {{contact.contactId}}</p>
+		
+		</div>
+		
+		<div class="detail-field">
+		
+			<b>Name</b>
+			
+			<p>{{contact.name}}</p>
+		
+		</div>
+		
+		<div class="detail-field">
+		
+			<b>VAT Number</b>
+			
+			<p>{{contact.vatNumber}}</p>
+		
+		</div>
+	
+	</div>
+	
+	<div class="details-container secondary">
+		
+		<div class="detail-field">
+		
+			<b>Address</b>
+			
+			<div fxLayout="column" fxLayoutGap="0">
+			
+				<p>{{contact.address.addressLine1}}</p>
+			
+				<p *ngIf="contact.address.addressLine2.length">{{contact.address.addressLine2}}</p>
+
+				<p>{{contact.address.townCity}}</p>
+
+				<p>{{contact.address.county}}</p>
+
+				<p>{{contact.address.postcode}}</p>
+				
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	<div class="details-container secondary">
+		
+		<div class="detail-field">
+		
+			<b>Telephone</b>
+			
+			<p>{{contact.primaryTelephone}}<span *ngIf="contact.secondaryTelephone.length">&nbsp;/&nbsp;{{contact.secondaryTelephone}}</span></p>
+		
+		</div>
+	
+	</div>
+	
+	<div class="details-container secondary">
+		
+		<div class="detail-field">
+		
+			<b>Email</b>
+			
+			<p>{{contact.primaryEmail}}<span *ngIf="contact.secondaryEmail.length">&nbsp;/&nbsp;{{contact.secondaryEmail}}</span></p>
+		
+		</div>
+	
+	</div>
+	
+	<div class="details-container secondary">
+		
+		<div class="detail-field">
+		
+			<b>Bank</b>
+			
+			<div fxLayout="column" fxLayoutGap="0">
+			
+				<p>Bank/Building Society Name: {{contact.bank.bankName}}</p>
+				
+				<p>Reference: {{contact.bank.bankReference}}</p>
+			
+				<p>Account Number: {{contact.bank.accountNumber}}</p>
+			
+				<p>SortCode: {{contact.bank.sortCode}}</p>
+				
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	<mat-card-actions *ngIf="contact">
+
+		<button mat-button routerLink="/contacts/all">Back</button>
+	
+		<button mat-button (click)="editContact()">Edit Contact</button>
+	
+		<button mat-button (click)="deleteContact(userId, contactId)">Delete Contact</button>
+	
+	</mat-card-actions>
+	
+</mat-card>

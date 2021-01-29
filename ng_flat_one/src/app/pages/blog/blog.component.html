@@ -1,0 +1,19 @@
+<div id="blog">
+  <div class="container">
+    <h2 class="text-center">RECENT POSTS</h2>
+    <p class="text-center mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div class="row mt-4 ">
+      <div class="col-md-4 col-sm-12 mt-3 mb-4" *ngFor="let post of posts">
+        <div class="card">
+          <img class="card-img-top" [src]="post.image" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <i>{{post.date}}</i>
+            <p class="card-text mt-3">{{post.text}}</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

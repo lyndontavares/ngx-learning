@@ -1,0 +1,117 @@
+<div fxLayout="column" fxLayoutGap="25px">
+
+    <mat-card fxFlex="33" class="mat-elevation-z3 dashboard-card">
+
+        <mat-card-header>
+            
+            <mat-card-title>Cashflow</mat-card-title>
+
+            <mat-card-subtitle>Income and expenses for the last 6 months</mat-card-subtitle>
+
+        </mat-card-header>
+
+        <mat-card-content>
+                
+            <canvas baseChart
+                    height="75"
+                    [datasets]="chartTestData"
+                    [labels]="chartTestLabels"
+                    [options]="chartTestOptions"
+                    [colors]="chartTestColours"
+                    [legend]="chartTestLegend"
+                    [chartType]="'line'">
+            </canvas>
+        
+        </mat-card-content>
+
+    </mat-card>
+
+    <div fxLayout.xs="column" fxLayout.gt-md="row" fxLayoutGap="25px">
+
+        <mat-card fxFlex.xs="100%" fxFlex class="mat-elevation-z3 dashboard-card">
+
+            <mat-card-header>
+                
+                <mat-card-title>Profit and Loss</mat-card-title>
+
+                <mat-card-subtitle>Net profit post-deductions</mat-card-subtitle>
+
+            </mat-card-header>
+
+            <mat-card-content>
+                
+                <p>Lorem ipsum...</p>
+            
+            </mat-card-content>
+
+        </mat-card>
+        
+        <mat-card fxFlex.xs="100%" fxFlex.gt-md="60%" class="mat-elevation-z3 dashboard-card">
+
+            <mat-card-header>
+                
+                <mat-card-title>Banking</mat-card-title>
+
+                <mat-card-subtitle>Bank balance over the last 6 months</mat-card-subtitle>
+
+            </mat-card-header>
+
+            <mat-card-content>
+                
+                <canvas baseChart
+                    height="100"
+                    [datasets]="chartTestData"
+                    [labels]="chartTestLabels"
+                    [colors]="chartTestColours"
+                    [options]="chartTestOptions"
+                    [legend]="chartTestLegend"
+                    [chartType]="'bar'">
+                </canvas>
+            
+            </mat-card-content>
+
+        </mat-card>
+
+    </div>
+
+    <div fxFlex="33%" fxLayout.xs="column" fxLayout.gt-sm="row" fxLayoutGap="25px">
+
+        <mat-card fxFlex.xs="100%" fxFlex class="mat-elevation-z3 dashboard-card">
+
+            <mat-card-header>
+                
+                <mat-card-title>Money Available</mat-card-title>
+
+                <mat-card-subtitle>Amounts available to yourself</mat-card-subtitle>
+
+            </mat-card-header>
+
+            <mat-card-content>
+                
+                <p>Lorem ipsum...</p>
+            
+            </mat-card-content>
+
+        </mat-card>
+
+        <mat-card fxFlex.xs="100%" fxFlex class="mat-elevation-z3 dashboard-card">
+
+            <mat-card-header>
+                
+                <mat-card-title>Calendar</mat-card-title>
+
+            </mat-card-header>
+
+            <mat-card-content>
+                
+                <p>Lorem ipsum...</p>
+            
+            </mat-card-content>
+
+        </mat-card>
+
+    </div>
+
+    <!-- TODO: INDIVIDUAL TILE COMPONENTS, TEST MATERIAL WEB COMPONENTS GRID LAYOUT FOR COMPARISON -->
+
+</div>

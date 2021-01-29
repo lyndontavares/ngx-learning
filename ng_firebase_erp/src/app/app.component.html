@@ -1,0 +1,27 @@
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-3">
+                <div class="d-flex justify-content-center align-items-center py-3">
+                        <img src="{{myImage}}"class="img-fluid" alt="Responsive image" width="200">
+                </div>
+                <div class="flex-column nav-pills"  aria-orientation="vertical">
+                        <a routerLink="/profile" routerLinkActive="active" class="nav-link " data-toggle="pill" role="tab" >Profile</a>
+                        <!-- <a routerLink="/addEmp" routerLinkActive="active" class="nav-link" data-toggle="pill" role="tab">Add Employee</a> -->
+                        <a routerLink="/empList" routerLinkActive="active" class="nav-link" data-toggle="pill" role="tab">Employee List</a>
+                        <a routerLink="/timesheet" routerLinkActive="active" class="nav-link" data-toggle="pill" role="tab">Time Sheet</a>
+                        <a routerLink="/doc" routerLinkActive="active" class="nav-link" data-toggle="pill" role="tab">Document</a>
+                        <a routerLink="/leave" routerLinkActive="active" class="nav-link" data-toggle="pill" role="tab">Leave</a>
+                        <a routerLink="/project" routerLinkActive="active" class="nav-link" data-toggle="pill" role="tab">Project</a>
+                    </div>    
+        </div>
+        <div class="col-9 py-3 ">
+                <div >
+                        <div><router-outlet></router-outlet></div>
+                </div>
+        </div>
+
+
+
+

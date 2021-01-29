@@ -1,0 +1,65 @@
+<h1 mat-dialog-title>New Item</h1>
+
+<mat-dialog-content>
+
+    <form [formGroup]="newItemForm">
+
+      <div class="form-group" fxLayout="row">
+                
+        <mat-form-field floatLabel="always" fxFlex>
+
+            <input matInput name="description" placeholder="Description *" formControlName="description">
+
+        </mat-form-field>
+
+      </div>
+
+      <div *ngIf="newItemForm.get('description').touched && newItemForm.get('description').invalid" class="form-error">You must enter an item description</div>
+
+      <div class="form-group" fxLayout.xs="column" fxLayout.gt-sm="row">
+                
+        <mat-form-field floatLabel="always" fxFlex>
+
+            <input matInput appParseInt name="quantity" type="number" placeholder="Quantity *" formControlName="quantity">
+
+        </mat-form-field>
+                
+        <mat-form-field floatLabel="always" fxFlex>
+
+            <input matInput appParseFloat name="unitPrice" type="number" placeholder="Unit Price *" formControlName="unitPrice">
+
+        </mat-form-field>
+
+      </div>
+
+      <div *ngIf="newItemForm.get('quantity').touched && newItemForm.get('quantity').invalid" class="form-error">You must enter a valid item quantity</div>
+
+      <div *ngIf="newItemForm.get('unitPrice').touched && newItemForm.get('unitPrice').invalid" class="form-error">You must enter a valid item unit price</div>
+
+      <div class="form-group" fxLayout="row">
+
+        <mat-form-field floatLabel="always" fxFlex.xs="100%" fxFlex.gt-sm="50%">
+
+          <mat-select name="taxCode" placeholder="Tax Code" class="form-control" [(ngModel)]="selectedTaxCodeRate" formControlName="taxCode" (selectionChange)="taxCodesService.getSelectedTaxCode(selectedTaxCodeRate)">
+
+              <mat-option *ngFor="let taxCode of taxCodes | sortBy: 'rate' " [value]="taxCode.rate">{{taxCode.name}}</mat-option>
+
+          </mat-select>
+
+        </mat-form-field>
+
+      </div>
+
+    </form>
+
+</mat-dialog-content>
+
+<br>
+
+<mat-dialog-actions align="end">
+
+  <button mat-button mat-dialog-close>Cancel</button>
+
+  <button mat-raised-button (click)="addItem()" [disabled]="!newItemForm.valid || !taxCodesService.selectedTaxCode">Add Item</button>
+
+</mat-dialog-actions>

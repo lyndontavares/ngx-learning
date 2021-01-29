@@ -1,0 +1,17 @@
+.movie-card{
+  display: inline-block;
+  margin: 7px 7px;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+mat-card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+mat-card-content {
+  padding: 0 !important;
+  text-align: left;
+}

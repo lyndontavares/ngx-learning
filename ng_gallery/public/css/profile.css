@@ -1,0 +1,55 @@
+body {
+  background: url('/images/brickBackground.jpg') no-repeat;
+  background-size: cover;
+  color: black;
+}
+
+h1{
+  font-family: 'Montez', cursive;
+  font-size: 145px;
+  text-align: center;
+  color: snow;
+  text-shadow: 0px 0px 4px black, 0px 0px 4px black, 0px 0px 4px black, 0px 0px 4px black, 0px 0px 4px black;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+a {
+  color: black;
+  font-weight: bolder;
+}
+
+#registerLink, #loginLink {
+  display: none;
+}
+
+#browseIcon {
+  margin-top: 10%;
+  height: 60px;
+  width: 680px;
+  margin-top: 80px;
+  background-color: #ffe5b3;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 4px;
+  border: 3px solid black;
+}
+
+.navIcon {
+  height: 80px;
+  width: 280px;
+  margin-top: 80px;
+  background-color: white;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 4px;
+  border: 3px solid black;
+}
+
+.navIcon:hover{
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #ffeb99;
+}

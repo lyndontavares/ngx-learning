@@ -1,0 +1,86 @@
+<div id="portfolio">
+  <section class="works">
+    <div class="container">
+      <h2 class="text-center">RECENT WORKS</h2>
+      <p class="text-center mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <div class="row mt-4">
+        <div class="col-sm-12">
+          <ul class="nav justify-content-center mt-4">
+            <li class="nav-item">
+              <a class="nav-link active all" (click)="onSelectType($event,'all')">All</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="onSelectType($event,'web')">Web</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="onSelectType($event,'mobile')">Mobile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="onSelectType($event,'photo')">Photography</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="onSelectType($event,'design')">Design</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="onSelectType($event,'type')">Type</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-4 col-sm-12 mt-3 mb-4 portfolio" *ngFor="let work of works" [class.hidden]="selectType === 'all' ? false : work.type !== selectType">
+          <div class="card">
+            <img class="card-img-top" [src]="work.image" width="250" alt="Card image cap">
+            <div class="card-footer">
+              <h1 class="lead">{{work.title}}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section class="features">
+
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-4 col-sm-12 text-center  mb-4">
+          <img src="assets/img/design.svg" width="200" class="img-fluid">
+        </div>
+        <div class="col-md-8 col-sm-12  mb-4">
+          <h2>Layered Neatly Photoshop Template</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum cursus massa vitae libero mollis, et suscipit nisl lobortis.
+            Maecenas eget elit velit. Nulla facilisi. Vivamus porta pharetra felis, vel malesuada nisl blandit sit amet.
+            Integer molestie orci nec enim gravida, non laoreet leo venenatis. Pellentesque suscipit hendrerit purus, ac
+            sagittis diam viverra in. Proin vulputate felis sollicitudin tortor ullamcorper, vitae consequat ex laoreet.
+            Nullam quis odio turpis.
+          </p>
+
+          <a class="btn link-1">
+            More
+          </a>
+        </div>
+      </div>
+      <hr/>
+      <div class="row mt-4">
+        <div class="col-md-8 col-sm-12  mt-4">
+          <h2>Layered Neatly Photoshop Template</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum cursus massa vitae libero mollis, et suscipit nisl lobortis.
+            Maecenas eget elit velit. Nulla facilisi. Vivamus porta pharetra felis, vel malesuada nisl blandit sit amet.
+            Integer molestie orci nec enim gravida, non laoreet leo venenatis. Pellentesque suscipit hendrerit purus, ac
+            sagittis diam viverra in. Proin vulputate felis sollicitudin tortor ullamcorper, vitae consequat ex laoreet.
+            Nullam quis odio turpis.
+          </p>
+          <a class="btn link-1">
+            More
+          </a>
+        </div>
+        <div class="col-md-4 col-sm-12 text-center  mt-4">
+          <img src="assets/img/design.svg" width="200" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

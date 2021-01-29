@@ -1,0 +1,10 @@
+<div *ngIf="movies" class="padding-top-60">
+
+  <h1>{{title}}</h1>
+  <div class="center">
+  <span *ngFor="let movie of movies;">
+    <app-poster-card [model]="movie"></app-poster-card>
+  </span>
+  </div>
+
+</div>

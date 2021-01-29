@@ -1,0 +1,285 @@
+<h1 mat-dialog-title>New Contact</h1>
+
+<mat-dialog-content>
+
+        <mat-horizontal-stepper linear>
+
+            <mat-step>
+
+                <ng-template matStepLabel>Basic Details</ng-template>
+
+                <form [formGroup]="basicDetailsGroup">
+
+                    <div class="form-group" fxLayout="row">
+                                
+                        <mat-form-field floatLabel="always" fxFlex>
+            
+                            <input matInput name="name" placeholder="Contact Name *" formControlName="name">
+            
+                        </mat-form-field>
+                
+                    </div>
+
+                    <div *ngIf="basicDetailsGroup.get('name').touched && basicDetailsGroup.get('name').invalid" class="form-error">You must enter a contact name</div>
+
+                </form>
+
+            </mat-step>
+
+            <mat-step>
+
+                <ng-template matStepLabel>Address</ng-template>
+
+                <form [formGroup]="addressGroup">
+
+                    <div class="form-group" fxLayout="row">
+            
+                        <mat-form-field floatLabel="always" fxFlex>
+                        
+                            <input matInput name="addressLine1" placeholder="Address Line 1 *" formControlName="addressLine1">
+                        
+                        </mat-form-field>
+            
+                        <mat-form-field floatLabel="always" fxFlex>
+            
+                            <input matInput name="addressLine2" placeholder="Address Line 2" formControlName="addressLine2">
+            
+                        </mat-form-field>
+            
+                    </div>
+
+                    <div *ngIf="addressGroup.get('addressLine1').touched && addressGroup.get('addressLine1').invalid" class="form-error" fxFlex.xs fxFlex.gt-sm="50%">You must enter a 1st address line</div>
+        
+                    <div class="form-group" fxLayout="row">
+            
+                        <mat-form-field floatLabel="always" fxFlex.xs fxFlex.gt-sm="50%">
+            
+                            <input matInput name="townCity" placeholder="Town/City *" formControlName="townCity">
+            
+                        </mat-form-field>
+            
+                        <mat-form-field floatLabel="always" fxFlex.xs fxFlex.gt-sm="50%">
+            
+                            <input matInput name="county" placeholder="County *" formControlName="county">
+            
+                        </mat-form-field>
+            
+                    </div>
+
+                    <div fxLayout="row">
+
+                        <div *ngIf="addressGroup.get('townCity').touched && addressGroup.get('townCity').invalid" class="form-error" fxFlex.xs fxFlex.gt-sm="50%">You must enter a town/city name</div>
+
+                        <div *ngIf="!addressGroup.get('townCity').touched || addressGroup.get('townCity').valid" fxFlex.gt-sm="50%"></div>
+
+                        <div *ngIf="addressGroup.get('county').touched && addressGroup.get('county').invalid" class="form-error" fxFlex.xs fxFlex.gt-sm="50%">You must enter a county name</div>
+
+                    </div>
+            
+                    <div class="form-group" fxLayout="row">
+            
+                        <mat-form-field floatLabel="always" fxFlex fxFlex.gt-sm="50%">
+            
+                            <input matInput name="postcode" placeholder="Postcode *" formControlName="postcode">
+            
+                        </mat-form-field>
+            
+                    </div>
+
+                    <div *ngIf="addressGroup.get('postcode').touched && addressGroup.get('postcode').invalid" class="form-error">You must enter a valid postcode</div>
+
+                </form>
+
+            </mat-step>
+
+            <mat-step>
+
+                <ng-template matStepLabel>Contact Details</ng-template>
+
+                <form [formGroup]="contactDetailsGroup">
+
+                    <div class="form-group" fxLayout="row">
+            
+                        <mat-form-field floatLabel="always" fxFlex>
+                        
+                            <input matInput name="primaryTelephone" placeholder="Primary Telephone *" formControlName="primaryTelephone">
+                        
+                        </mat-form-field>
+            
+                        <mat-form-field floatLabel="always" fxFlex>
+            
+                            <input matInput name="secondaryTelephone" placeholder="Secondary Telephone" formControlName="secondaryTelephone">
+            
+                        </mat-form-field>
+            
+                    </div>
+
+                    <div *ngIf="contactDetailsGroup.get('primaryTelephone').touched && contactDetailsGroup.get('primaryTelephone').invalid" class="form-error" fxFlex.xs fxFlex.gt-sm="50%">You must enter a primary telephone number</div>
+        
+                    <div class="form-group" fxLayout="row">
+            
+                        <mat-form-field floatLabel="always" fxFlex.xs fxFlex.gt-sm="50%">
+            
+                            <input matInput name="primaryEmail" placeholder="Primary Email *" formControlName="primaryEmail">
+            
+                        </mat-form-field>
+            
+                        <mat-form-field floatLabel="always" fxFlex.xs fxFlex.gt-sm="50%">
+            
+                            <input matInput name="secondaryEmail" placeholder="Secondary Email" formControlName="secondaryEmail">
+            
+                        </mat-form-field>
+            
+                    </div>
+
+                    <div *ngIf="contactDetailsGroup.get('primaryEmail').touched && contactDetailsGroup.get('primaryEmail').invalid" class="form-error" fxFlex.xs fxFlex.gt-sm="50%">You must enter a primary email address</div>
+                
+                </form>
+
+            </mat-step>
+
+            <mat-step>
+
+                <ng-template matStepLabel>Bank</ng-template>
+
+                <form [formGroup]="bankDetailsGroup">
+            
+                    <div class="form-group" fxLayout="row">
+            
+                        <mat-form-field floatLabel="always" fxFlex fxFlex.gt-sm="50%">
+            
+                            <input matInput name="bankName" placeholder="Bank/Building Society Name *" formControlName="bankName">
+            
+                        </mat-form-field>
+            
+                        <mat-form-field floatLabel="always" fxFlex fxFlex.gt-sm="50%">
+            
+                            <input matInput name="bankReference" placeholder="Bank Reference *" formControlName="bankReference">
+            
+                        </mat-form-field>
+            
+                    </div>
+
+                    <div fxLayout="row">
+
+                        <div *ngIf="bankDetailsGroup.get('bankName').touched && bankDetailsGroup.get('bankName').invalid" class="form-error" fxFlex.xs fxFlex.gt-sm="50%">You must enter a bank/building society name</div>
+
+                        <div *ngIf="!bankDetailsGroup.get('bankName').touched || bankDetailsGroup.get('bankName').valid" fxFlex.gt-sm="50%"></div>
+
+                        <div *ngIf="bankDetailsGroup.get('bankReference').touched && bankDetailsGroup.get('bankReference').invalid" class="form-error" fxFlex.xs fxFlex.gt-sm="50%">You must enter a bank reference</div>
+
+                    </div>
+            
+                    <div class="form-group" fxLayout="row">
+            
+                        <mat-form-field floatLabel="always" fxFlex fxFlex.gt-sm="50%">
+            
+                            <input matInput name="accountNumber" placeholder="Account Number *" formControlName="accountNumber">
+            
+                        </mat-form-field>
+            
+                        <mat-form-field floatLabel="always" fxFlex fxFlex.gt-sm="50%">
+            
+                            <input matInput name="sortCode" placeholder="Sort Code *" formControlName="sortCode">
+            
+                        </mat-form-field>
+            
+                    </div>
+
+                    <div fxLayout="row">
+
+                        <div *ngIf="bankDetailsGroup.get('accountNumber').touched && bankDetailsGroup.get('accountNumber').invalid" class="form-error" fxFlex.xs fxFlex.gt-sm="50%">You must enter a account number</div>
+
+                        <div *ngIf="!bankDetailsGroup.get('accountNumber').touched || bankDetailsGroup.get('accountNumber').valid" fxFlex.gt-sm="50%"></div>
+
+                        <div *ngIf="bankDetailsGroup.get('sortCode').touched && bankDetailsGroup.get('sortCode').invalid" class="form-error" fxFlex.xs fxFlex.gt-sm="50%">You must enter a valid sort code</div>
+
+                    </div>
+            
+                    <div class="form-group" fxLayout="row">
+            
+                        <mat-form-field floatLabel="always" fxFlex fxFlex.gt-sm="50%">
+            
+                            <input matInput name="vatNumber" placeholder="VAT Number *" formControlName="vatNumber">
+            
+                        </mat-form-field>
+            
+                    </div>
+
+                    <div *ngIf="bankDetailsGroup.get('vatNumber').touched && bankDetailsGroup.get('vatNumber').invalid" class="form-error" fxFlex.xs fxFlex.gt-sm="50%">You must enter a valid VAT number</div>
+                
+                </form>
+
+            </mat-step>
+
+        </mat-horizontal-stepper>
+
+      <!-- <div class="form-group" fxLayout="row">
+                
+            <mat-form-field floatLabel="always" fxFlex>
+
+                <input matInput name="name" placeholder="Name *" formControlName="name">
+
+            </mat-form-field>
+
+        </div>
+
+        <div *ngIf="newContactForm.get('name').touched && newContactForm.get('name').invalid" class="form-error">You must enter a contact name</div>
+            
+        <mat-card-subtitle>Address</mat-card-subtitle>
+
+        <div class="form-group" fxLayout="row">
+
+            <mat-form-field floatLabel="always" fxFlex>
+            
+                <input matInput name="addressLine1" placeholder="Address Line 1" formControlName="addressLine1">
+            
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" fxFlex>
+
+                <input matInput name="addressLine2" placeholder="Address Line 2" formControlName="addressLine2">
+
+            </mat-form-field>
+
+        </div>
+
+        <div class="form-group" fxLayout="row">
+
+            <mat-form-field floatLabel="always" fxFlex.xs fxFlex.gt-sm="50%">
+
+                <input matInput name="townCity" placeholder="Town/City" formControlName="townCity">
+
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" fxFlex.xs fxFlex.gt-sm="50%">
+
+                <input matInput name="county" placeholder="County" formControlName="county">
+
+            </mat-form-field>
+
+        </div>
+
+        <div class="form-group" fxLayout="row">
+
+            <mat-form-field floatLabel="always" fxFlex fxFlex.gt-sm="50%">
+
+                <input matInput name="postcode" placeholder="Postcode" formControlName="postcode">
+
+            </mat-form-field>
+
+        </div>
+
+        <mat-card-subtitle>Bank</mat-card-subtitle> -->
+
+</mat-dialog-content>
+
+<br>
+
+<mat-dialog-actions align="end">
+
+  <button mat-button mat-dialog-close>Cancel</button>
+
+  <button mat-raised-button (click)="addContact()" [disabled]="basicDetailsGroup.invalid || addressGroup.invalid || contactDetailsGroup.invalid || bankDetailsGroup.invalid">Add Contact</button>
+
+</mat-dialog-actions>

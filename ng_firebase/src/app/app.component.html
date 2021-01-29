@@ -1,0 +1,37 @@
+<div *ngIf="fire.user | async as user; else showLogin">
+  <h1>Hello {{ user.displayName }}!</h1>
+  <button (click)="logout()">Logout</button>
+</div>
+<ng-template #showLogin>
+  <p>Please login.</p>
+  <button (click)="login()">Login with Google</button>
+</ng-template>
+
+
+<h1>Novo</h1>
+<div  style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="name">Email</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="menu.email" name="email">
+    </div>
+
+    <div class="form-group">
+      <label for="age">Nome</label>
+      <input type="text" class="form-control" id="age" required [(ngModel)]="menu.firstName" name="firstName">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+
+<h1>Cardapio</h1>
+ <ul>
+  <li *ngFor="let i of menus ">
+     {{i.email}}
+     <ng-container *ngFor="let p of i.cardapio"> {{ p.nome }} <br>  </ng-container>
+  </li>
+</ul>
+

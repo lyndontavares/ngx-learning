@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1.text-center Register
+  form
+  .row
+    .col-xs-offset-2.col-xs-8#registerForm
+      .form-group
+        label(for='email') Email address:
+        input#email.form-control(type='email', placeholder='Email')
+      .form-group
+        label(for='username') Username:
+        input#username.form-control(type='text', placeholder='Username')
+      .form-group
+        label(for='password') Password:
+        input#password.password.form-control(type='password', placeholder='Password')
+      .form-group
+        label(for='password2') Password (again):
+        input#password2.password.form-control(type='password', placeholder='Password Again')
+      button.btn.btn-info.btn-lg(type='button') Register
+
+block scripts
+  script(src="/js/register.js")

@@ -1,0 +1,658 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "sidenav1": {
+      "root": "projects/sidenav1/",
+      "sourceRoot": "projects/sidenav1/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/sidenav1",
+            "index": "projects/sidenav1/src/index.html",
+            "main": "projects/sidenav1/src/main.ts",
+            "polyfills": "projects/sidenav1/src/polyfills.ts",
+            "tsConfig": "projects/sidenav1/tsconfig.app.json",
+            "assets": [
+              "projects/sidenav1/src/favicon.ico",
+              "projects/sidenav1/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/sidenav1/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/sidenav1/src/environments/environment.ts",
+                  "with": "projects/sidenav1/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sidenav1:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sidenav1:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sidenav1:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sidenav1/src/test.ts",
+            "polyfills": "projects/sidenav1/src/polyfills.ts",
+            "tsConfig": "projects/sidenav1/tsconfig.spec.json",
+            "karmaConfig": "projects/sidenav1/karma.conf.js",
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/sidenav1/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/sidenav1/src/favicon.ico",
+              "projects/sidenav1/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sidenav1/tsconfig.app.json",
+              "projects/sidenav1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sidenav1-e2e": {
+      "root": "projects/sidenav1-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/sidenav1-e2e/protractor.conf.js",
+            "devServerTarget": "sidenav1:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sidenav1:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/sidenav1-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sidenav2": {
+      "root": "projects/sidenav2/",
+      "sourceRoot": "projects/sidenav2/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/sidenav2",
+            "index": "projects/sidenav2/src/index.html",
+            "main": "projects/sidenav2/src/main.ts",
+            "polyfills": "projects/sidenav2/src/polyfills.ts",
+            "tsConfig": "projects/sidenav2/tsconfig.app.json",
+            "assets": [
+              "projects/sidenav2/src/favicon.ico",
+              "projects/sidenav2/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "projects/sidenav2/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/sidenav2/src/environments/environment.ts",
+                  "with": "projects/sidenav2/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sidenav2:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sidenav2:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sidenav2:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sidenav2/src/test.ts",
+            "polyfills": "projects/sidenav2/src/polyfills.ts",
+            "tsConfig": "projects/sidenav2/tsconfig.spec.json",
+            "karmaConfig": "projects/sidenav2/karma.conf.js",
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "projects/sidenav2/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/sidenav2/src/favicon.ico",
+              "projects/sidenav2/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sidenav2/tsconfig.app.json",
+              "projects/sidenav2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sidenav2-e2e": {
+      "root": "projects/sidenav2-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/sidenav2-e2e/protractor.conf.js",
+            "devServerTarget": "sidenav2:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sidenav2:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/sidenav2-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sidenav3": {
+      "root": "projects/sidenav3/",
+      "sourceRoot": "projects/sidenav3/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/sidenav3",
+            "index": "projects/sidenav3/src/index.html",
+            "main": "projects/sidenav3/src/main.ts",
+            "polyfills": "projects/sidenav3/src/polyfills.ts",
+            "tsConfig": "projects/sidenav3/tsconfig.app.json",
+            "assets": [
+              "projects/sidenav3/src/favicon.ico",
+              "projects/sidenav3/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "projects/sidenav3/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/sidenav3/src/environments/environment.ts",
+                  "with": "projects/sidenav3/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sidenav3:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sidenav3:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sidenav3:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sidenav3/src/test.ts",
+            "polyfills": "projects/sidenav3/src/polyfills.ts",
+            "tsConfig": "projects/sidenav3/tsconfig.spec.json",
+            "karmaConfig": "projects/sidenav3/karma.conf.js",
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "projects/sidenav3/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/sidenav3/src/favicon.ico",
+              "projects/sidenav3/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sidenav3/tsconfig.app.json",
+              "projects/sidenav3/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sidenav3-e2e": {
+      "root": "projects/sidenav3-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/sidenav3-e2e/protractor.conf.js",
+            "devServerTarget": "sidenav3:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sidenav3:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/sidenav3-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sidenav4": {
+      "root": "projects/sidenav4/",
+      "sourceRoot": "projects/sidenav4/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/sidenav4",
+            "index": "projects/sidenav4/src/index.html",
+            "main": "projects/sidenav4/src/main.ts",
+            "polyfills": "projects/sidenav4/src/polyfills.ts",
+            "tsConfig": "projects/sidenav4/tsconfig.app.json",
+            "assets": [
+              "projects/sidenav4/src/favicon.ico",
+              "projects/sidenav4/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/sidenav4/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/sidenav4/src/environments/environment.ts",
+                  "with": "projects/sidenav4/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sidenav4:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sidenav4:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sidenav4:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sidenav4/src/test.ts",
+            "polyfills": "projects/sidenav4/src/polyfills.ts",
+            "tsConfig": "projects/sidenav4/tsconfig.spec.json",
+            "karmaConfig": "projects/sidenav4/karma.conf.js",
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/sidenav4/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/sidenav4/src/favicon.ico",
+              "projects/sidenav4/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sidenav4/tsconfig.app.json",
+              "projects/sidenav4/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sidenav4-e2e": {
+      "root": "projects/sidenav4-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/sidenav4-e2e/protractor.conf.js",
+            "devServerTarget": "sidenav4:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sidenav4:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/sidenav4-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "form1": {
+      "root": "projects/form1/",
+      "sourceRoot": "projects/form1/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/form1",
+            "index": "projects/form1/src/index.html",
+            "main": "projects/form1/src/main.ts",
+            "polyfills": "projects/form1/src/polyfills.ts",
+            "tsConfig": "projects/form1/tsconfig.app.json",
+            "assets": [
+              "projects/form1/src/favicon.ico",
+              "projects/form1/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/form1/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/form1/src/environments/environment.ts",
+                  "with": "projects/form1/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "form1:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "form1:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "form1:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/form1/src/test.ts",
+            "polyfills": "projects/form1/src/polyfills.ts",
+            "tsConfig": "projects/form1/tsconfig.spec.json",
+            "karmaConfig": "projects/form1/karma.conf.js",
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/form1/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/form1/src/favicon.ico",
+              "projects/form1/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/form1/tsconfig.app.json",
+              "projects/form1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "form1-e2e": {
+      "root": "projects/form1-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/form1-e2e/protractor.conf.js",
+            "devServerTarget": "form1:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "form1:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/form1-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "sidenav1"
+}

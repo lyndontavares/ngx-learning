@@ -1,0 +1,215 @@
+<h4 class="page-title">New Invoice</h4>
+
+<div *ngIf="!contacts" class="spinner-container">
+
+	<mat-spinner></mat-spinner>
+
+</div>
+
+<mat-card *ngIf="contacts" fxLayout="column" fxLayoutGap="50px" class="page-card">
+
+    <mat-card-content>
+
+        <form name="newInvoiceForm" [formGroup]="newInvoiceForm">
+
+            <h4 class="form-group-title">Basic Details</h4>
+
+            <div class="form-group" fxLayout="row">
+
+                <mat-form-field floatLabel="always" fxFlex.xs="100%" fxFlex.md="50%" fxFlex.lg="30%">
+
+                    <mat-select name="contactId" placeholder="Contact *" class="form-control" formControlName="contact" [(ngModel)]="selectedContactId" (selectionChange)="getSelectedContact()">
+
+                        <mat-option value="">Select a contact</mat-option>
+
+                        <mat-option value="newContact" (click)="newContact()">New contact</mat-option>
+
+                        <mat-option *ngFor="let contact of contacts" [value]="contact.id">{{contact.name}}</mat-option>
+
+                    </mat-select>
+
+                </mat-form-field>
+
+            </div>
+
+            <br>
+
+            <div *ngIf="contacts.length && !selectedContactId" class="form-error">You must select a contact</div>
+
+            <div class="form-group" fxLayout="row">
+                
+                <mat-form-field floatLabel="always" fxFlex.xs="100%" fxFlex.md="50%" fxFlex.lg="30%">
+
+                    <input matInput #reference name="reference" placeholder="Reference *" formControlName="reference">
+
+                </mat-form-field>
+            
+            </div>
+
+            <div *ngIf="newInvoiceForm.get('reference').touched && newInvoiceForm.get('reference').invalid" class="form-error">You must enter a reference</div>
+
+            <div class="form-group" fxLayout="row">
+
+                <mat-form-field floatLabel="always" fxFlex.xs="100%" fxFlex.md="50%" fxFlex.lg="30%">
+
+                    <input matInput [matDatepicker]="invoiceDatePicker" [min]="minDate" [max]="maxDate" name="date" placeholder="Date *" formControlName="date">
+
+                    <mat-datepicker-toggle matSuffix [for]="invoiceDatePicker"></mat-datepicker-toggle>
+
+                    <mat-datepicker #invoiceDatePicker></mat-datepicker>
+
+                </mat-form-field>
+
+            </div>
+
+            <div *ngIf="newInvoiceForm.get('date').touched && newInvoiceForm.get('date').invalid" class="form-error">You must enter a date</div>
+            
+            <div class="form-group" fxLayout="row">
+
+                <mat-form-field floatLabel="always" fxFlex.xs="100%" fxFlex.md="75%" fxFlex.lg="40%">
+
+                    <textarea matInput name="description" placeholder="Description" formControlName="description" rows="4"></textarea>
+
+                </mat-form-field>
+
+            </div>
+
+            <br>
+
+            <mat-card-subtitle>Items:</mat-card-subtitle>
+
+            <mat-table *ngIf="items.length" [dataSource]="itemsData" matSort class="mat-elevation-z0">
+
+                <ng-container matColumnDef="selectItem">
+        
+                  <th mat-header-cell *matHeaderCellDef fxFlex="10%" fxLayoutAlign="start center">
+        
+                    <mat-checkbox 
+                      (change)="$event ? toggleSelectAllItems() : null" 
+                      [checked]="itemsSelection.hasValue() && allItemsSelected()" 
+                      [indeterminate]="itemsSelection.hasValue() && !allItemsSelected()"
+                      class="checkbox">
+        
+                    </mat-checkbox>
+        
+                  </th>
+        
+                  <td mat-cell *matCellDef="let item" fxFlex="10%" fxLayoutAlign="start center">
+        
+                    <mat-checkbox 
+                      (click)="$event.stopPropagation()" 
+                      (change)="$event ? itemsSelection.toggle(item) : null" 
+                      [checked]="itemsSelection.isSelected(item)"
+                      class="checkbox">
+        
+                    </mat-checkbox>
+        
+                  </td>
+        
+                  <mat-footer-cell *matFooterCellDef fxFlex="10%"></mat-footer-cell>
+        
+                </ng-container>
+        
+                <ng-container matColumnDef="description">
+        
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="20%">Description</mat-header-cell>
+        
+                    <mat-cell *matCellDef="let item" fxFlex="20%">{{item.description}}</mat-cell>
+                    
+                    <mat-footer-cell *matFooterCellDef fxFlex="20%"></mat-footer-cell>
+        
+                </ng-container>
+        
+                <ng-container matColumnDef="quantity">
+        
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%">Quantity</mat-header-cell>
+        
+                    <mat-cell *matCellDef="let item" fxFlex="10%">{{item.quantity}}</mat-cell>
+                    
+                    <mat-footer-cell *matFooterCellDef fxFlex="10%"></mat-footer-cell>
+        
+                </ng-container>
+        
+                <ng-container matColumnDef="unitPrice">
+        
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%">Unit Price</mat-header-cell>
+        
+                    <mat-cell *matCellDef="let item" fxFlex="10%">{{item.unitPrice | currency: 'GBP'}}</mat-cell>
+                    
+                    <mat-footer-cell *matFooterCellDef fxFlex="10%"></mat-footer-cell>
+        
+                </ng-container>
+
+				<ng-container matColumnDef="subtotal">
+
+					<mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%">Subtotal</mat-header-cell>
+
+					<mat-cell *matCellDef="let item" fxFlex="10%">{{item.subtotal | currency: 'GBP'}}</mat-cell>
+                    
+                    <mat-footer-cell *matFooterCellDef fxFlex="10%">{{invoiceTotals.subtotal | currency: 'GBP'}}</mat-footer-cell>
+
+				</ng-container>
+
+				<ng-container matColumnDef="taxCode">
+
+					<mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="15%">Tax Code</mat-header-cell>
+
+					<mat-cell *matCellDef="let item" fxFlex="15%">{{item.taxCode.name}}</mat-cell>
+                    
+                    <mat-footer-cell *matFooterCellDef fxFlex="15%"></mat-footer-cell>
+
+				</ng-container>
+
+				<ng-container matColumnDef="tax">
+
+					<mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%">Tax</mat-header-cell>
+
+					<mat-cell *matCellDef="let item" fxFlex="10%">{{item.tax | currency: 'GBP'}}</mat-cell>
+                    
+                    <mat-footer-cell *matFooterCellDef fxFlex="10%">{{invoiceTotals.tax | currency: 'GBP'}}</mat-footer-cell>
+
+				</ng-container>
+
+				<ng-container matColumnDef="total">
+
+					<mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="15%">Total</mat-header-cell>
+
+                    <mat-cell *matCellDef="let item" fxFlex="15%">{{item.total | currency: 'GBP'}}</mat-cell>
+                    
+                    <mat-footer-cell *matFooterCellDef fxFlex="15%">{{invoiceTotals.total | currency: 'GBP'}}</mat-footer-cell>
+
+				</ng-container>
+
+                <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+        
+                <mat-row *matRowDef="let row; columns: tableColumns" (click)="selectItem(row)"></mat-row>
+
+                <mat-footer-row *matFooterRowDef="tableColumns"></mat-footer-row>
+
+            </mat-table>
+
+            <p *ngIf="!items.length">No items added</p>
+
+            <br>
+
+            <div class="table-actions">
+
+                <button mat-raised-button (click)="newItem()">Add Item</button>
+
+                <button mat-raised-button (click)="deleteItems()" [hidden]="!itemsSelection.selected.length">Delete Selected Items</button>
+
+            </div>
+
+        </form>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+
+        <button mat-button (click)="reset()" [disabled]="!newInvoiceForm.touched || !newInvoiceForm.dirty">Reset</button>
+
+        <button mat-button (click)="save()" [disabled]="!newInvoiceForm.valid || !items.length || !invoiceId || invoiceId == 0 || selectedContactId === '' || selectedContactId === 'newContact' ">Save</button>
+
+    </mat-card-actions>
+
+</mat-card>

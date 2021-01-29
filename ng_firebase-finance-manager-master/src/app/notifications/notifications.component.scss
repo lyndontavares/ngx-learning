@@ -1,0 +1,22 @@
+.mat-list-item.notification {
+    cursor: pointer;
+    padding: 0;
+
+    .notification-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 0;
+    }
+
+    span.notification-title {
+        font-size: 13px;
+        margin: 0 0 5px 0;
+    }
+
+    span.notification-description {
+        font-size: 13px;
+        color: #797C82;
+    }
+}

@@ -1,0 +1,59 @@
+body {
+  background: url('http://s8.favim.com/610/150630/aesthetic-background-gradient-green-Favim.com-2877559.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Josefin Slab', serif;
+  color: black;
+  font-size: 24px;
+}
+
+h1 {
+  font-family: 'Montez', cursive;
+  font-size: 80px;
+  color: snow;
+  text-shadow: 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black;
+}
+
+a {
+  color: #00B7FF;
+}
+
+button.btn {
+  border: 1px solid black;
+}
+
+label {
+  color: black;
+  font-size: 20px;
+}
+
+#registerForm {
+  margin-top: 20px;
+  background-color: #e6e6e6;
+  opacity: 0.95;
+  padding: 30px;
+  border: 2px solid black;
+}
+
+#registerForm input {
+  background-color: white;
+  opacity: 1;
+}
+
+#addBookForm label{
+  color: white;
+  font-size: 22px;
+}
+
+#logoutLink, #changePassword {
+  display: none;
+}
+
+#alertReset, #alertPasswordChanged {
+  display: none;
+  color: rgb(0, 212, 176);
+  font-weight: bold;
+}
+
+.navbar-default {
+  border: 2px solid gray;
+}

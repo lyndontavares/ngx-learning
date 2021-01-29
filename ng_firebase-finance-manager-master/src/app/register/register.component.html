@@ -1,0 +1,53 @@
+<div id="register-container" fxLayoutAlign="center center" class="col-xs-12">
+
+	<form fxLayout="column" fxLayoutGap="50px" class="col-xs-12 col-sm-6 col-md-4">
+		
+		<div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="start start">
+
+			<h3 class="form-title">Create Account</h3>
+
+			<h4 class="form-subtitle">Enter your email address and password below</h4>
+			
+		</div>
+		
+		<div class="col-xs-12" fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="center center">
+
+<!--
+			<mat-form-field class="width-100pc">
+
+				<input matInput [(ngModel)]="displayName" name="displayName" type="text" placeholder="Display Name">
+
+			</mat-form-field>
+-->
+
+			<mat-form-field class="width-100pc">
+
+				<input matInput [(ngModel)]="email" name="email" type="email" placeholder="Email Address">
+
+			</mat-form-field>
+
+			<mat-form-field class="width-100pc">
+
+				<input matInput [(ngModel)]="password" name="password" type="password" placeholder="Password">
+
+			</mat-form-field>
+
+			<mat-form-field class="width-100pc">
+
+				<input matInput [(ngModel)]="password2" name="password2" type="password" placeholder="Re-Enter Password">
+
+			</mat-form-field>
+
+			<button mat-raised-button (click)="register()" [disabled]="!email || !password || !password2" class="primary width-100pc">Register</button>
+			
+		</div>
+			
+		<div fxLayout="row" fxLayoutAlign="space-between center">
+
+			<a routerLink="/login" class="secondary-link">Back to Login</a>
+
+		</div>
+
+	</form>
+	
+</div>

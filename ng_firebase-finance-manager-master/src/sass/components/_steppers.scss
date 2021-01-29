@@ -1,0 +1,32 @@
+.mat-horizontal-stepper-header-container {
+    margin-bottom: 50px;
+
+    .mat-step-header {
+    
+        .mat-step-icon ,
+        .mat-step-icon-not-touched {
+            font-size: 12px;
+            height: 22px;
+            width: 22px;
+
+            .mat-icon {
+                font-size: 12px;
+                height: 12px;
+                width: 12px;
+            }
+        }
+    
+        .mat-step-label,
+        .mat-step-label-selected {
+            font-size: 13px;
+        }
+    }
+}
+
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+
+    button {
+        margin-right: 15px;
+    }
+}

@@ -1,0 +1,77 @@
+<h4 class="page-title">All Invoices</h4>
+
+<div *ngIf="!invoicesData" class="spinner-container">
+
+	<mat-spinner></mat-spinner>
+
+</div>
+
+<ng-container *ngIf="invoicesData">
+
+	<mat-table [dataSource]="invoicesData" matSort matSortActive="invoiceId" matSortDirection="asc" class="mat-elevation-z1">
+
+		<ng-container matColumnDef="invoiceId">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 5%; flex: none">ID</mat-header-cell>
+
+			<mat-cell *matCellDef="let invoice" style="width: 5%; flex: none">{{invoice.invoiceId}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="reference">
+
+			<mat-header-cell *matHeaderCellDef style="width: 15%; flex: none">Reference</mat-header-cell>
+
+			<mat-cell *matCellDef="let invoice" style="width: 15%; flex: none">{{invoice.reference}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="date">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 15%; flex: none">Date</mat-header-cell>
+
+			<mat-cell *matCellDef="let invoice" style="width: 15%; flex: none">{{invoice.date.toDate() | date: 'dd/MM/yyyy'}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="contactName">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 15%; flex: none">Contact</mat-header-cell>
+
+			<mat-cell *matCellDef="let invoice" style="width: 15%; flex: none">{{invoice.contact.name}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="description">
+
+			<mat-header-cell *matHeaderCellDef style="width: 20%; flex: none">Description</mat-header-cell>
+
+			<mat-cell *matCellDef="let invoice" style="width: 20%; flex: none">{{invoice.description}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="total">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%; flex: none">Total</mat-header-cell>
+
+			<mat-cell *matCellDef="let invoice" style="width: 10%; flex: none">{{invoice.total | currency: 'GBP'}}</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="remainderDue">
+
+			<mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%; flex: none">Remainder Due</mat-header-cell>
+
+			<mat-cell *matCellDef="let invoice" style="width: 10%; flex: none">{{invoice.remainderDue | currency: 'GBP'}}</mat-cell>
+
+		</ng-container>
+
+		<mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+
+		<mat-row *matRowDef="let row; columns: tableColumns" (click)="viewInvoice(row)"></mat-row>
+
+	</mat-table>
+
+	<mat-paginator [pageSize]="25" [pageSizeOptions]="[ 10, 25, 50 ]" [showFirstLastButtons]="true" class="mat-elevation-z1"></mat-paginator>
+	
+</ng-container>

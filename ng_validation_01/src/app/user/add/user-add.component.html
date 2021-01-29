@@ -1,0 +1,29 @@
+<h1 class="bd-title" id="content">Formulário Reativo usando rxweb</h1>
+<br/>
+<form *ngIf="userFormGroup" [formGroup]="userFormGroup">
+
+<div class="form-group">
+    <input type="text" formControlName="firstName" placeholder="First Name" class="form-control"  />
+    <small class="form-text text-danger" >{{userFormGroup.controls.firstName.errorMessage}}<br/></small>
+</div>
+<div class="form-group">
+    <input placeholder="Last Name" type="text" formControlName="lastName" class="form-control"  />
+    <small class="form-text text-danger" >{{userFormGroup.controls.lastName.errorMessage}}<br/></small>
+</div>
+<div class="form-group">
+    <input placeholder="UserName" type="text" formControlName="userName" class="form-control"  />
+    <small class="form-text text-danger" >{{userFormGroup.controls.userName.errorMessage}}<br/></small>
+</div>
+<div class="form-group">
+    <input placeholder="Password" type="text" formControlName="password" class="form-control"  />
+    <small class="form-text text-danger" >{{userFormGroup.controls.password.errorMessage}}<br/></small>
+</div>
+<div class="form-group">
+    <input placeholder="Confirm" type="text" formControlName="confirmPassword" class="form-control"  />
+    <small class="form-text text-danger" >{{userFormGroup.controls.confirmPassword.errorMessage}}<br/></small>
+</div>
+  <div class="form-group">
+    <label>Full Name : {{user.fullName}}</label>
+  </div>
+<button [disabled]="!userFormGroup.valid" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,24 @@
+{
+  "name": "photo_gallery_app",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Paige Bolduc <paigebolduc@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "https://github.com/bolducp/photoGalleryApp",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "bootstrap": "~3.3.6",
+    "sweetalert": "~1.1.3"
+  }
+}

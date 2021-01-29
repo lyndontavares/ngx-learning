@@ -1,0 +1,206 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav [(mode)]="over" [(opened)]="opened" class="bottom-to-top">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <div class="with-bg"></div>
+      <div class="with-logo">
+        <a class="logo">
+          <img class="img-fluid w-100" src="./assets/images/logo-bg-none.svg" style="width:100%">
+        </a>
+      </div>
+    </div>
+    <!-- <div style="background-color: #3e50b5 !important;" class="py-3 text-white" fxLayout="column" fxLayoutAlign="center center"
+      fxLayoutGap="1px">
+      <div>
+        <a>
+          <span class="lead">armando sms </span>
+        </a>
+      </div>
+      <div>
+        <a>
+          <span class="">armandoaepp@gmail.con</span>
+        </a>
+      </div>
+    </div> -->
+    <div class="mt-3">
+      <mat-nav-list>
+        <!-- <a mat-list-item class="ml-2" style="font-size:15px;"> -->
+        <span class="header-list"> Module </span>
+        <!-- </a> -->
+      </mat-nav-list>
+      <mat-accordion multi="true" [displayMode]="displayMode">
+
+        <mat-expansion-panel class="no-shadow">
+          <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+            <mat-panel-title>
+              Home
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list class="ml-0" dense>
+            <mat-list-item>
+              <a href="#">Home 1</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Home 2</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Home 3</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Home 4</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Home 5</a>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="no-shadow">
+          <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+            <mat-panel-title>
+              Page Menu
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list class="ml-0" dense>
+            <mat-list-item>
+              <a href="#">Page Menu 1</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Page Menu 2</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Page Menu 3</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Page Menu 4</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Page Menu 5</a>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+
+
+
+
+      </mat-accordion>
+
+      <mat-nav-list>
+        <!-- <a mat-list-item class="ml-2" style="font-size:15px;"> -->
+        <span class="header-list"> Module 2 </span>
+        <!-- </a> -->
+      </mat-nav-list>
+      <mat-accordion multi="true" [displayMode]="displayMode">
+
+        <mat-expansion-panel class="no-shadow">
+          <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+            <mat-panel-title>
+              Home 2
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list class="ml-0" dense>
+            <mat-list-item>
+              <a href="#">Home 1</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Home 2</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Home 3</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Home 4</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Home 5</a>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="no-shadow">
+          <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+            <mat-panel-title>
+              Page Menu 2
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list class="ml-0" dense>
+            <mat-list-item>
+              <a href="#">Page Menu 1</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Page Menu 2</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Page Menu 3</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Page Menu 4</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a href="#">Page Menu 5</a>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+
+      </mat-accordion>
+
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="header-box-shadow">
+      <!-- <button mat-icon-button (click)="sidenav.toggle()" fxShow.sm="true" fxShow.gt-sm="false"> -->
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button mat-button>
+        <mat-icon class="mr-1">home</mat-icon>
+        Menu 1
+      </button>
+      <!-- <button mat-button>
+        <mat-icon class="mr-1">link</mat-icon>
+        Link</button>
+      <button mat-button>
+        <mat-icon class="mr-1">link</mat-icon>
+        Link</button>
+      -->
+      <button mat-button [matMenuTriggerFor]="dropDown">
+        DropDown
+        <mat-icon class="ml-1">arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #dropDown="matMenu" overlapTrigger="false">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Dropdown Link 1</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Dropdown Link 2</span>
+        </button>
+      </mat-menu>
+
+      <span class="spacer"></span>
+
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon class="mr-2">account_circle</mat-icon>
+        @armandoaepp
+        <mat-icon class="ml-1">arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" overlapTrigger="false">
+        <button mat-menu-item>
+          <mat-icon>account_circle</mat-icon>
+          <span>My Account</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>money</mat-icon>
+          <span>Billing</span>
+        </button>
+      </mat-menu>
+      <!-- <mat-icon class="ml-3" title="Logout">exit_to_app</mat-icon> -->
+    </mat-toolbar>
+  </mat-sidenav-content>
+  <!-- <router-outlet></router-outlet> -->
+</mat-sidenav-container>

@@ -1,0 +1,401 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component should build without a problem 1`] = `
+<div
+  id="root0"
+  ng-version="6.0.0-beta.7"
+>
+  <pm-app>
+    <pm-navbar>
+      <nav
+        class="mat-elevation-z6"
+      >
+        <button
+          angulartics2on="click"
+          angularticsaction="ToggleSideMenu"
+          class="mat-icon-button"
+          id="toggle-menu-button"
+          mat-icon-button=""
+        >
+          <span
+            class="mat-button-wrapper"
+          >
+            <mat-icon
+              aria-hidden="true"
+              class="mat-icon"
+              fonticon="fa-bars"
+              fontset="fa"
+              role="img"
+            />
+          </span>
+          <div
+            class="mat-button-ripple mat-ripple"
+            matripple=""
+          />
+          <div
+            class="mat-button-focus-overlay"
+          />
+        </button>
+        <a
+          class="nav-button mat-button"
+          mat-button=""
+          routerlink=""
+        >
+          <span
+            class="mat-button-wrapper"
+          >
+            FB-ANGULAR-UNIVERSAL-STARTER
+          </span>
+          <div
+            class="mat-button-ripple mat-ripple"
+            matripple=""
+          />
+          <div
+            class="mat-button-focus-overlay"
+          />
+        </a>
+        <div
+          class="flex-spacer"
+        />
+        
+        <a
+          class="nav-button mat-button"
+          href="https://www.angularuniversal.com"
+          mat-button=""
+        >
+          <span
+            class="mat-button-wrapper"
+          >
+            Consulting
+          </span>
+          <div
+            class="mat-button-ripple mat-ripple"
+            matripple=""
+          />
+          <div
+            class="mat-button-focus-overlay"
+          />
+        </a>
+        <a
+          class="nav-button mat-button"
+          href="/api-docs"
+          mat-button=""
+        >
+          <span
+            class="mat-button-wrapper"
+          >
+            API
+          </span>
+          <div
+            class="mat-button-ripple mat-ripple"
+            matripple=""
+          />
+          <div
+            class="mat-button-focus-overlay"
+          />
+        </a>
+        <button
+          aria-haspopup="true"
+          class="mat-icon-button"
+          id="user-menu-btn"
+          mat-icon-button=""
+        >
+          <span
+            class="mat-button-wrapper"
+          >
+            <mat-icon
+              aria-hidden="true"
+              class="mat-icon"
+              fonticon="fa-user-circle-o"
+              fontset="fa"
+              role="img"
+            />
+          </span>
+          <div
+            class="mat-button-ripple mat-ripple"
+            matripple=""
+          />
+          <div
+            class="mat-button-focus-overlay"
+          />
+        </button>
+        <mat-menu
+          class="ng-tns-c8-1"
+        >
+          
+        </mat-menu>
+      </nav>
+    </pm-navbar>
+    <mat-sidenav-container
+      class="sidenav-container mat-drawer-container mat-sidenav-container"
+      exclude="#toggle-menu-button"
+    >
+      <div
+        class="mat-drawer-backdrop"
+      />
+      <mat-sidenav
+        class="sidenav mat-elevation-z6 mat-drawer mat-sidenav ng-tns-c1-0 ng-trigger ng-trigger-transform"
+        tabindex="-1"
+      >
+        <mat-list
+          class="mat-list"
+        >
+          <div
+            id="menu-top"
+          >
+            <h3
+              class="mat-subheader"
+              matsubheader=""
+            >
+              Pages
+            </h3>
+            <mat-slide-toggle
+              class="mat-slide-toggle mat-accent"
+            >
+              <label
+                class="mat-slide-toggle-label"
+              >
+                <div
+                  class="mat-slide-toggle-bar"
+                >
+                  <input
+                    class="mat-slide-toggle-input cdk-visually-hidden"
+                    type="checkbox"
+                  />
+                  <div
+                    class="mat-slide-toggle-thumb-container"
+                  >
+                    <div
+                      class="mat-slide-toggle-thumb"
+                    />
+                    <div
+                      class="mat-slide-toggle-ripple mat-ripple"
+                      mat-ripple=""
+                    />
+                  </div>
+                </div>
+                <span
+                  class="mat-slide-toggle-content"
+                />
+              </label>
+            </mat-slide-toggle>
+          </div>
+          <mat-list-item
+            class="mat-list-item"
+          >
+            <div
+              class="mat-list-item-content"
+            >
+              <div
+                class="mat-list-item-ripple mat-ripple"
+                mat-ripple=""
+              />
+              <div
+                class="mat-list-text"
+              >
+                <a
+                  class="mat-button mat-line"
+                  mat-button=""
+                  matline=""
+                  routerlink="/"
+                >
+                  <span
+                    class="mat-button-wrapper"
+                  >
+                    Home
+                  </span>
+                  <div
+                    class="mat-button-ripple mat-ripple"
+                    matripple=""
+                  />
+                  <div
+                    class="mat-button-focus-overlay"
+                  />
+                </a>
+                <a
+                  class="mat-button mat-line"
+                  mat-button=""
+                  matline=""
+                  routerlink="changelog"
+                >
+                  <span
+                    class="mat-button-wrapper"
+                  >
+                    Changelog
+                  </span>
+                  <div
+                    class="mat-button-ripple mat-ripple"
+                    matripple=""
+                  />
+                  <div
+                    class="mat-button-focus-overlay"
+                  />
+                </a>
+                <a
+                  class="mat-button mat-line"
+                  href="/sitemap.xml"
+                  mat-button=""
+                  matline=""
+                >
+                  <span
+                    class="mat-button-wrapper"
+                  >
+                    Sitemap
+                  </span>
+                  <div
+                    class="mat-button-ripple mat-ripple"
+                    matripple=""
+                  />
+                  <div
+                    class="mat-button-focus-overlay"
+                  />
+                </a>
+                <a
+                  class="mat-button mat-line"
+                  href="/robots.txt"
+                  mat-button=""
+                  matline=""
+                >
+                  <span
+                    class="mat-button-wrapper"
+                  >
+                    Robots
+                  </span>
+                  <div
+                    class="mat-button-ripple mat-ripple"
+                    matripple=""
+                  />
+                  <div
+                    class="mat-button-focus-overlay"
+                  />
+                </a>
+                <a
+                  class="mat-button mat-line"
+                  href="https://www.angularuniversal.com"
+                  mat-button=""
+                  matline=""
+                >
+                  <span
+                    class="mat-button-wrapper"
+                  >
+                    Consulting
+                  </span>
+                  <div
+                    class="mat-button-ripple mat-ripple"
+                    matripple=""
+                  />
+                  <div
+                    class="mat-button-focus-overlay"
+                  />
+                </a>
+              </div>
+            </div>
+          </mat-list-item>
+          <mat-divider
+            class="mat-divider"
+            role="separator"
+          />
+          <h3
+            class="mat-subheader"
+            matsubheader=""
+          >
+            Boss Area
+          </h3>
+          <mat-list-item
+            class="mat-list-item"
+          >
+            <div
+              class="mat-list-item-content"
+            >
+              <div
+                class="mat-list-item-ripple mat-ripple"
+                mat-ripple=""
+              />
+              <div
+                class="mat-list-text"
+              >
+                <a
+                  class="mat-button mat-line"
+                  mat-button=""
+                  matline=""
+                  routerlink="pages"
+                >
+                  <span
+                    class="mat-button-wrapper"
+                  >
+                    Pages
+                  </span>
+                  <div
+                    class="mat-button-ripple mat-ripple"
+                    matripple=""
+                  />
+                  <div
+                    class="mat-button-focus-overlay"
+                  />
+                </a>
+                <a
+                  class="mat-button mat-line"
+                  mat-button=""
+                  matline=""
+                >
+                  <span
+                    class="mat-button-wrapper"
+                  >
+                    Assets
+                  </span>
+                  <div
+                    class="mat-button-ripple mat-ripple"
+                    matripple=""
+                  />
+                  <div
+                    class="mat-button-focus-overlay"
+                  />
+                </a>
+                <a
+                  class="mat-button mat-line"
+                  mat-button=""
+                  matline=""
+                  routerlink="users"
+                >
+                  <span
+                    class="mat-button-wrapper"
+                  >
+                    Users
+                  </span>
+                  <div
+                    class="mat-button-ripple mat-ripple"
+                    matripple=""
+                  />
+                  <div
+                    class="mat-button-focus-overlay"
+                  />
+                </a>
+                <a
+                  class="mat-button mat-line"
+                  mat-button=""
+                  matline=""
+                  routerlink="admin"
+                >
+                  <span
+                    class="mat-button-wrapper"
+                  >
+                    Admin
+                  </span>
+                  <div
+                    class="mat-button-ripple mat-ripple"
+                    matripple=""
+                  />
+                  <div
+                    class="mat-button-focus-overlay"
+                  />
+                </a>
+              </div>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-sidenav>
+      
+    </mat-sidenav-container>
+  </pm-app>
+</div>
+`;

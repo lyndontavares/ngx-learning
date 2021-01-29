@@ -1,0 +1,77 @@
+#team {
+  position: relative;
+  padding: 3.5rem 0;
+  background-color: #ddb4c4 !important;
+  color: #fcfcfc;
+}
+
+p {
+  color: #fcfcfc;
+}
+
+.card {
+  color: #2d2d2d !important;
+  border-radius: 0 !important;
+  border: none !important;
+  margin: 0 2%;
+}
+
+.card p {
+  color: #888888 !important;
+}
+
+.card-img-top {
+  border-radius: 0 !important;
+}
+
+.card-footer {
+  padding: 0;
+  background-color: white !important;
+}
+
+.card-footer .row {
+  margin: 0;
+}
+
+.col{
+  padding: .75rem 0;
+}
+
+.card-footer {
+  text-align: center;
+  font-size: 1rem;
+  color: white;
+}
+
+.facebook {
+  color: #2941a5 !important;
+}
+
+.twitter {
+  color: #24a8fb !important;
+}
+
+.pinterest {
+  color: #d21535 !important;
+}
+
+.facebook:hover {
+  background-color: #2941a5 !important;
+}
+
+.twitter:hover {
+  background-color: #24a8fb !important;
+}
+
+.pinterest:hover {
+  background-color: #d21535 !important;
+}
+
+a {
+  color: white;
+  transition: all .5s;
+}
+
+a:hover {
+  color: white !important;
+}

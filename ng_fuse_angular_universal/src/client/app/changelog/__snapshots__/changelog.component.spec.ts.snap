@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChangelogComponent should compile 1`] = `
+<test-component>
+  <pm-changelog>
+    <mat-card
+      class="mat-card"
+    >
+      <div />
+    </mat-card>
+  </pm-changelog>
+</test-component>
+`;

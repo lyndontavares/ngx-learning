@@ -1,0 +1,37 @@
+mat-card {
+    
+    &.page-card {
+        // margin-bottom: 25px;
+	}
+
+	.mat-card-header {
+
+		.mat-card-title {
+			font-size: 13px;
+			font-weight: 500;
+		}
+
+		.mat-card-subtitle {
+			font-size: 12px;
+		}
+	
+		.mat-card-header-text {
+			margin: 0;
+		}
+
+	}
+
+	.mat-card-content {
+		p {
+			font-size: 13px;
+		}
+	}
+	
+	mat-card-actions {
+		
+		button, .mat-button {
+			font-size: 14px;
+			font-weight: 400;
+		}
+	}
+}
