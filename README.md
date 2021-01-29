@@ -1,8 +1,10 @@
 # Repositório de Estudos
 
+Este repositório contém projetos exemplos sobre diversos apectos do framework Angular. 
+
 Tecnologias:
 
-* Angular 6.x, 7.x
+* Angular 6.x, 7.x, 8.x, 9.x
 * Express
 * Passaport
 * Mongoose
